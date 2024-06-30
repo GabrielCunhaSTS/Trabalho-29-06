@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 exports.router = router;
 const auth = require('../controllers/autenticacao');
+
 const authB = require('../controllers/autenticacaoB');
 const { findAllProdutos } = require('../controllers/produto');
 const pagamento = require('../controllers/pagamento');
@@ -35,6 +36,7 @@ router.post('/pagamento', pagamento.iniciarPagamento);
 router.post('/update-quantidade', sacola.UpdateQuantidade);
 router.post('/remove-produto', sacola.RemoveProduto);
 router.post('/atualizarNome', perfil.AtualizarNome);
+router.post('/comentarios/adicionar', comentarios.adicionarComentario);
 router.post('/DeletarConta', perfil.ExcluirConta)
 
 // Rotas GET para o pagamento
