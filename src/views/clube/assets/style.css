@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-image: url(img/fundo.png) ;
+    background-repeat: no-repeat;
+    background-color: #E9F6FF;
+    background-size: 100%;
+    margin: 0 0 25vw 0;
+}
+
+.corpo{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 4;
+    bottom: 3vw;
+    width: 98%;
+    background-color: #ffffff;
+    display: flex;
+    border-radius: 5vw;
+    justify-content: space-around;
+    padding: 2vw 0;
+    left: 1vw;
+    border: solid 1px #CCCCCC;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+  
+.navbar a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    font-size: 4vw;
+}
+
+.navbar .active img{
+    width: 7vw;
+}
+
+#NavInicio {
+    color: #008B92;  
+}
+
+#voltar {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 10vw;
+    margin: 2vw;
+}
+
+.logo {
+    position: absolute;
+    z-index: 2;
+    width: 25vw;
+    left: 50%;
+    top: 5vw;
+    transform: translate(-50%);
+}
+
+.geral {
+    position: relative;
+    top: 25vw;
+}
+
+.ttl {
+    margin: 0 0 4vw 5vw;
+}
+
+.ttl h1 {
+    font-size: 8vw;
+    margin: 0;
+    font-weight: bold;
+}
+
+.ttl h3{
+    margin: 0;
+    font-size: 5vw;
+    font-weight: 500;
+}
+
+container {
+    display: flex;
+    background-color: #E9F6FF;
+    border-radius: 5vw 5vw 0 0;
+}
+
+.pontos {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 3vw 0 3vw 0;
+    gap: 10vw;
+}
+
+.pontos h2 {
+    margin: 0;
+    font-size: 5.5vw;
+    color: #464646;
+}
+
+.pontos h3 {
+    margin: 0;
+    text-align: center;
+    font-size: 9vw;
+    color: #00404A;
+}
+
+.pontos p {
+    text-align: center;
+    margin: -2.5vw 0 0 0 ;
+    font-weight: 600;
+    font-size: 3.5vw;
+}
+
+.barra {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;  
+}
+
+#btnRecompensas {
+    border: none;
+    width: 55vw;
+    height: 9vw;
+    border-radius: 2vw;
+    font-size: 4.5vw;
+    background-color: #0A9396;
+    color: #ffffff;
+    font-weight: bold;
+    margin-top: 4vw;
+}
+
+.historico {
+    display: flex;
+    justify-content: center;
+}
+
+.ttlHistorico {
+    width: 90%;
+}
+
+.infoHist {
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+    margin-left: 4vw;
+    margin-bottom: 10vw;
+}
+
+.infoHist h1 {
+    margin: 0;
+    font-size: 4.5vw;
+}
+
+.infoHist h2 {
+    margin: 0;
+    font-size: 4.5vw;
+    color: #00930F;
+}

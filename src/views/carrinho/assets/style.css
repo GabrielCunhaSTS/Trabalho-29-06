@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    font-family: "Montserrat", sans-serif;
+}
+
+
+body{
+    background-color: #E9F6FF;
+    background-image: url(img/Teste1.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.corpo{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 4;
+    bottom: 3vw;
+    width: 98%;
+    background-color: #ffffff;
+    display: flex;
+    border-radius: 5vw;
+    justify-content: space-around;
+    padding: 2vw 0;
+    left: 1vw;
+    border: solid 1px #CCCCCC;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  }
+  
+  .navbar a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    font-size: 4vw;
+  }
+
+
+  .navbar .active img{
+    width: 7vw;
+  }
+
+#NavInicio {
+  color: #008B92;  
+}
+
+a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.Clube{
+    width: 10vw;
+}
+
+#voltar {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 10vw;
+    margin: 2vw;
+}
+
+.logo {
+    position: absolute;
+    z-index: 2;
+    width: 25vw;
+    left: 50%;
+    top: 5vw;
+    transform: translate(-50%);
+}
+
+.navSup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.volta{
+    width: 9vw;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 22%;
+}
+
+.texto{
+    margin-left: 3%;
+    text-align: start;
+}
+
+.texto h1{
+    font-family: "Montserrat", sans-serif;
+}
+
+.texto h4{
+    margin-top: -12%;
+    font-family: "Montserrat", sans-serif;
+    font-size: 3vw;
+}
+
+#filter{
+    margin-right: 2vw;
+    border-radius: 3vw;
+    width: 25vw;
+    padding: 0.5vw;
+    font-size: 5vw;
+    font-family: "Montserrat", sans-serif;
+    font-weight:700;
+    color: #fff;
+    background-color: #008A93;
+}
+
+#option{
+    font-size: 8vw;
+}
+
+.caixaP{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 25vw;
+}
+
+
+.caixa{
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+
+    width: 95%;
+    height: 28vw;
+    background-color: #fff;
+    border-radius: 4vw;
+    border: solid 2px rgb(84, 84, 84);
+}
+
+.caixaE{
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    height: 28vw;
+    background-color: #fff;
+    border-radius: 4vw;
+    border: solid 2px rgb(84, 84, 84);
+    margin-top: 5vw;
+}
+
+.caixaR{
+    display: flex;
+    justify-content: center;
+    width: 95%;
+    height: 28vw;
+    background-color: #fff;
+    border-radius: 4vw;
+    border: solid 2px rgb(84, 84, 84);
+    margin-top: 5vw;
+}
+
+.escrita{
+    display: flex;
+    flex-direction: column;
+    padding: 0vw 2vw 0vw 0vw;
+}
+
+.escrita h2{
+    margin-top: 1.5vw;
+    margin-left: 3vw;
+    font-size: 4vw;
+    font-family: "Montserrat", sans-serif;
+    color: #000;
+}
+
+.escrita p{
+    margin-top: -4vw;
+    font-size: 2.5vw;
+    margin-left: 5vw;
+    margin-top: -1vw;
+    font-family: "Montserrat", sans-serif;
+}
+
+.price{
+    display: flex;
+    margin-top: -4vw;
+    margin-right: 5vw;
+    font-size: 3vw;
+    justify-content: space-between;
+    font-family: "Montserrat", sans-serif;
+    color: black;
+}
+
+.price h6{
+    margin-left: 4vw;
+    font-size: 2.5vw;
+    margin-top: 4vw;
+    color: #575757;
+}
+
+.priceE{
+    display: flex;
+    margin-top: -4vw;
+    margin-left: 5vw;
+    font-size: 3vw;
+    justify-content: space-between;
+    font-family: "Montserrat", sans-serif;
+}
+
+.priceE h6{
+    margin-right: 7vw;
+    font-size: 2.5vw;
+    margin-top: 4vw;
+    color: #575757;
+}
+
+.img img{
+    height: 28vw;
+}
+
+.corpo{
+    padding: 0;
+    margin: 0;
+}

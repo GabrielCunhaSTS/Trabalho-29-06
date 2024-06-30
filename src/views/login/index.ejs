@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/png" href="/login/assets/img/iconWeb.svg">
+    <link rel="stylesheet" href="/login/assets/style.css" >
+    <script src="/login/assets/script.js" defer></script>
+    <title>Login</title>
+</head>
+<body>
+    <div class="blur"></div>
+    
+    <img src="/login/assets/img/logo.png" class="logo">
+    <div class="geral">
+
+        <div class="inpts">
+            <h2>Faça seu login</h2>
+
+            <form id="form-login" method="post">
+                <div>
+
+                    <input
+                        type="email" 
+                        id="email" 
+                        name="emailDigit"
+                        class="input" 
+                        placeholder="E-mail" 
+                        required="required"
+                    >
+
+                    <input
+                        type="password" 
+                        id="senha" 
+                        name="senhaDigit"
+                        class="input"
+                        placeholder="Senha" 
+                        required="required"
+                    >
+                </div>
+            
+                <h4> <a href="#">Esqueceu a senha?</a> </h4>
+                </div>
+
+                <div class="ou">
+                    <div class="barra"></div>
+                    <h3>OU</h3>
+                    <div class="barra"></div>
+                </div>
+
+                <div class="redes">
+                    <div><img src="/login/assets/img/google.png"></div>
+                    <div><img src="/login/assets/img/facebook.png"></div>
+                    <div><img src="/login/assets/img/outlook.png"></div>
+                </div>
+
+                <button id="Entrar">Entrar</button>
+                <h2 class="Cadastrar">Não possui conta? <a href="/escolher">Cadastre-se</a></h2>
+            </form>
+    </div>
+
+    <dialog id="msgErroSenha" class="ModalErro"> 
+        <div class="modal-background" id="modalBackground"></div>
+        <div id="Erro">
+            <div class="ajustes">
+                <img src="/login/assets/img/CoquinhoTriste.png">
+                <h1> Ops! </h1>
+                <p class="p">Parece que sua senha está errada, por favor tente novamente</p>
+                <button id="btnVoltarSenha">Tentar Novamente</button>
+                <p>Esqueceu a senha? <a href="#">Clique Aqui</a></p>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="msgErroEmail" class="ModalErro"> 
+        <div class="modal-background" id="modalBackground"></div>
+        <div id="Erro">
+            <div class="ajustes">
+                <img src="/login/assets/img/CoquinhoTriste.png">
+                <h1> Ops! </h1>
+                <p class="p">Usuário não encontrado!</p>
+                <button id="btnVoltarEmail">Tentar Novamente</button>
+                <p>Não possui uma conta? <a href="/cadastrar">Clique Aqui</a></p>
+            </div>
+        </div>
+    </dialog>
+
+    <div id="notificacao">
+        oi
+    </div>
+</body>
+</html>

@@ -1,0 +1,289 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-image: url(img/fundo.png);
+    background-color: #E7AA4D;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.blur {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+
+#voltar {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    width: 10vw;
+    margin: 2vw;
+}
+
+.geral {
+    background-color: rgba(9, 146, 152, 75%);
+    width: 90%;
+    height: 100%;
+    padding: 5vw 0vw 5vw 0vw;
+    margin-top: 20vw;
+    border-radius: 7vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 2;
+}
+
+.inc {
+    text-align: center;
+}
+
+.inc h4 {
+    color: white;
+    margin-top: 5vw;
+    font-weight: 500;
+    font-size: 5vw;
+}
+
+.logo {
+    position: absolute;
+    z-index: 2;
+    width: 25vw;
+    left: 50%;
+    top: 5vw;
+    transform: translate(-50%);
+}
+
+#cdstBanhista {
+    border: 0;
+    background-color: #00404A;
+    color: white;
+    width: 65vw;
+    height: 14vw;
+    font-size: 7vw;
+    border-radius: 4vw;
+    font-weight: 600;
+}
+
+#cdstBanhista img {
+    position: absolute;
+    right: 13vw;
+    width: 12vw;
+    margin-top: 3vw;
+}
+
+.input {
+    border: none;
+    width: 95%;
+    height: 9vw;
+    font-size: 5vw;
+    border-radius: 3.5vw;
+    padding-left: 4%;
+    background-color: #E2F2F1;
+    font-weight: 550;
+    outline: none;
+    margin-bottom: 3vw;
+}
+
+#form-cadastrar{
+    gap: 5vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.inpts {
+    display: flex;
+    width: 90%;
+    height: 85%;
+    flex-wrap: wrap;
+    text-align: start;
+}
+
+.inpts label {
+    font-size: 4.8vw;
+    color: #00404A;
+    font-weight: bold;
+}
+
+#btnCadastrar {
+    border: none;
+    width: 50vw;
+    height: 12vw;
+    border-radius: 3vw;
+    font-size: 6vw;
+    font-weight: bold;
+    color: white;
+    background-color: #00404A;
+}
+
+.check {
+    display: flex;
+    width: 80%;
+    align-items: center;
+    gap: 3vw;
+    color: white;
+    font-size: 4vw;
+}
+
+.check input {
+    width: 10vw;
+    height: 10vw;
+}
+
+
+.termos {
+    width: 90%;
+    height: 90vw;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    background-color: white;
+    border-radius: 4vw;
+}
+
+.fade {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 4;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.text {
+    width: 90%;
+    margin-top: 5vw;
+}
+
+.text h1{
+    font-size: 5vw;
+}
+
+#voltar2 {
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    width: 8vw;
+}
+
+.check2 {
+    font-size: 4vw;
+    display: flex;
+    align-items: center;
+    gap: 3vw;
+}
+
+.check2 input {
+    width: 9vw;
+    height: 9vw;
+}
+
+.dsp {
+    font-size: 3vw;
+    text-align: center;
+}
+
+.continuar {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+#btnTermo {
+    width: 35vw;
+    height: 10vw;
+    border: none;
+    font-size: 5vw;
+    border-radius: 2vw;
+    color: white;
+    background-color: #0A9396;
+    margin-top: 3vw;
+}
+
+#modalTermos {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+#msgSucesso {
+    background-image: url(img/fundo.png);
+    background-color: #E9F6FF;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    max-width: 100%;
+    max-height: 100%;
+    z-index: 3;
+}
+
+.msgCorpo {
+    background-color: rgba(9, 146, 152, 75%);
+    border-radius: 4vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: 125vw;
+    align-items: center;
+    z-index: 2;
+}
+
+.msgLogo {
+    width: 45vw;
+}
+
+.msgCorpo h1 {
+    font-size: 7vw;
+    width: 100%;
+    color: #ffffff;
+}
+
+.coquinho {
+    width: 60vw;
+}
+
+.msgCorpo h2 {
+    margin: 0.5vw;
+    font-size: 7vw;
+    color: #ffffff;
+}
+
+.msgLogo {
+    width: 35vw;
+}
+
+#msgBtnConcluir {
+    margin-top: 5vw;
+    width: 35vw;
+    height: 9vw;
+    border: none;
+    border-radius: 2vw;
+    font-size: 4.5vw;
+    color: #ffffff;
+    background-color: #00404A;
+}

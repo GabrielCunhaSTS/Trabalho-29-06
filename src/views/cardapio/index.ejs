@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/png" href="/cardapio/assets/img/iconWeb.svg">
+    <link rel="stylesheet" href="/cardapio/assets/style.css">
+    <script src="/cardapio/assets/script.js" defer></script>
+    <title>Cardápio</title>
+</head>
+<body>
+    <a href="/reserva"><img src="/cardapio/assets/img/voltar.png" id="voltar"></a>
+    <img src="/cardapio/assets/img/logo.png" class="logo">
+    
+    <section>
+        <h2 class="nmBarraca">Barraca do Roberto</h2>
+        <h4 class="cardapio">Cardápio</h4>
+
+        <div class="corpo">
+            <nav class="navbar">
+                <a href="/inicial" class="active" id="NavInicio"><img src="/cardapio/assets/img/HomeClick.png" >Inicio</a>
+                <a href="#" class="active" id="NavReserva"> <img src="/cardapio/assets/img/Reserva.png" alt="">Reserva</a>
+                <a href="/Sacola" class="active" id="NavPedido"> <img src="/cardapio/assets/img/Pedido.png" alt="">Sacola</a>
+                <a href="#" class="active" id="NavPerfil"> <img src="/cardapio/assets/img/Perfil.png" alt="">Perfil</a>
+              </nav>
+        </div>
+        
+        <container class="geral">
+            <div class="btns">
+                <button>Salgado</button>
+                <button>Doces</button>
+                <button>Bebidas</button>
+            </div>
+
+            <div class="pttl">
+                <div class="ttl">
+                    <h1>Salgados</h1>
+                    <div class="right">
+                        <select name="filtro" id="filtro">
+                            <option>Filtrar</option>
+                            <option>b</option>
+                            <option>c</option>
+                        </select>
+                        <img src="/cardapio/assets/img/grade.png">
+                    </div>
+                </div>
+            </div>
+
+            <div id="produtos"></div>
+        </container>
+    </section>
+
+    <div id="resultado"></div>
+    
+    <dialog id="modalProduto">
+        <img src="/cardapio/assets/img/voltar.png" id="fecharModal">
+        <img src="/cardapio/assets/img/logo.png" class="logo">
+        <div class="geralModal">
+            <div class="imgProdutoModal">
+                <img src='/cardapio/assets/img/imgProdutos.svg'>
+            </div>
+            <div class="datailsModal">
+                <div class="NmPc">
+                    <div class="nomes">
+                        <h2 id="modalNome"></h2>
+                        <p id="modalPreco"></p>
+                    </div>
+                    <div class="dsModal">
+                        <p id="modalDescricao"></p>
+                        <p class="tmpEst">Tempo estimado:    <strong>25 min</strong></p>
+                    </div>
+                    <div>
+                        <textarea name="comentario" id="comentario" cols="30" rows="7" placeholder="Adicionar observação"></textarea>
+                    </div>
+                    <div class="qttModal">
+                        <label for="quantidade">Quantidade:</label>
+                        <div class="qtt">
+                            <button id="diminuirQuantidade"><img src="/cardapio/assets/img/menos.svg" class="imgSinalMenos"></button>
+                            <input type="number" id="quantidade" value="1" min="1">
+                            <button id="aumentarQuantidade"><img src="/cardapio/assets/img/mais.svg" class="imgSinalMais"></button>
+                        </div>
+                    </div>
+                    <div class="addSacola">
+                        <button id="adicionarSacola">ADICIONAR</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <div id="notificacao">
+        <img src="/cardapio/assets/img/ItemAdd.png">
+        <p>Produto Adicionado com sucesso</p>
+    </div>
+
+    
+
+</body>
+</html>

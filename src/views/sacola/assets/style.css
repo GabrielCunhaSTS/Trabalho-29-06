@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+body{
+    background-image: url(img/fundo.svg);
+    background-color: #E9F6FF;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.blur {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); 
+
+}
+
+.corpo{
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 4;
+    bottom: 3vw;
+    width: 98%;
+    background-color: #ffffff;
+    display: flex;
+    border-radius: 5vw;
+    justify-content: space-around;
+    padding: 2vw 0;
+    left: 0.7vw;
+    border: solid 1px #CCCCCC;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+}
+  
+.navbar a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    font-size: 4vw;
+}
+
+
+.navbar .active img{
+    width: 7vw;
+}
+
+#NavSacola {
+  color: #008B92;  
+}
+
+.logo {
+    position: absolute;
+    z-index: 2;
+    width: 25vw;
+    left: 50%;
+    top: 5vw;
+    transform: translate(-50%);
+}
+
+section {
+    position: relative;
+    top: 34vw;
+    width: 100%;
+    height: 100%;
+}
+
+.geral {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #E9F6FF;
+    width: 100%;
+    height: 25vw;
+    border-radius: 10vw 10vw 0vw 0vw;
+}
+.nmBarraca {
+    font-size: 7vw;
+    margin: 0vw 0vw 0vw 5vw;
+}
+
+.sacola {
+    font-size: 5vw;
+    margin: 0 0 2vw 5vw;
+    font-weight: 600;
+}
+
+.ttlProduto {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.ttlProduto h1 {
+    font-size: 5vw;
+    padding: 1vw;
+    border-top: solid 1px;
+    border-bottom: solid 1px;
+    text-align: center;
+    width: 85%;
+    border-color: #00000057;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#produtos {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.produto {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 1vw 1vw 1vw #0000001f;
+    border-radius: 3vw;
+    width: 95%;
+    height: 20vw;
+    gap: 2vw;
+    margin: 2vw 0 2vw 0;
+}
+
+.imgProduto{
+    width: 35vw;
+    height: 100%;
+    border-radius: 3vw 0 0 3vw;
+}
+
+.details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.nmsProd h2 {
+    margin: 0;
+    font-size: 4.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nmsProd {
+    font-size: 3vw;
+}
+
+.valor {
+    font-size: 4vw;
+    margin: 1vw 1vw 0 0;
+}
+
+.qtt {
+    align-items: center;
+    display: flex;
+    font-size: 4vw;
+    font-weight: 700;
+    gap: 2vw;
+    margin-right: 2vw;
+    height: 6vw;
+}
+
+.qtt input{
+    text-align: center;
+    background: transparent;
+    border: navajowhite;
+    outline: none;
+    width: 8vw;
+    font-size: 5vw;
+}
+
+.qtt button {
+    border: none;
+    font-size: 6vw;
+    width: 6vw;
+    height: 6vw;
+    padding: 0;
+    color: #ffffff;
+    background-color: #008B92;
+    border-radius: 100%;
+    font-weight: 700;
+}
+
+.imgSinalMais {
+    width: 5vw;
+    height: 6vw;
+}
+
+.imgSinalMenos {
+    width: 3vw;
+    height: 6vw;
+}
+
+.apagar {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+}
+
+.imgLixeira {
+    background-color: #008B92;
+    width: 4vw;
+    padding: 1vw 3vw 1vw 3vw;
+    border-radius: 2vw 0 2vw 0;
+}
+
+.resumo {
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    background-color: #008B92;
+    width: 100%;
+    flex-wrap: wrap;
+    padding-bottom: 25vw;
+    color: white;
+    border-radius: 8vw;
+    display: flex;
+    justify-content: center;
+    gap: 7vw;
+}
+
+.total {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: solid 1px;
+    margin-top: 5vw;
+}
+
+.total h3 {
+    font-size: 5.5vw;
+    margin: 0;
+}
+
+#btnFinalizar {
+    border: none;
+    width: 50vw;
+    height: 10vw;
+    border-radius: 2vw;
+    font-size: 4.6vw;
+    background-color: #00404A;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+@keyframes abrir {
+    0% {margin-top: -3vw;}
+    100% {margin-top: 0;}
+}
+
+.Excluir {
+    position: fixed;
+    background-color: #ffffff;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    border-radius: 3vw;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    border-color: #00000040;
+    animation: abrir 0.5s;
+}
+
+.x {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.x img {
+    margin: 3vw 3vw 0 0;
+    width: 5vw;
+}
+
+.Excluir h3 {
+    text-align: center;
+    font-size: 5vw;
+    margin: 1vw;
+}
+
+.imgExcluir {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.imgExcluir img {
+    width: 12vw;
+}
+
+.Excluir p {
+    text-align: center;
+    font-size: 3.5vw;
+    font-weight: 500;
+}
+
+.divBtnExcluirModal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15vw;
+}
+
+.divBtnExcluirModal button {
+    width: 35vw;
+    height: 10vw;
+    border: none;
+    font-size: 5vw;
+    background-color: #00404A;
+    color: #ffffff;
+    border-radius: 3vw;
+    font-weight: 600;
+    outline: none;
+}
+
+
+
+.ModalExcluir {
+    border: none;
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 4;
+}
+
+@keyframes EntrarNtf {
+    0% {right: -65vw; opacity: 0;}
+	100% {right: -3vw; opacity: 1;}
+}
+
+#notificacao {
+    display: none;
+    position: fixed;
+    right: -3vw;
+    top: 20vw;
+    width: 90vw;
+    background-color: #ffffff;
+    height: 15vw;
+    border-radius: 3vw 0 0 3vw;
+    animation: EntrarNtf 0.5s;
+    justify-content: start;
+    align-items: center;
+    gap: 3vw;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+    border: solid 0.1vw;
+    border-color: #00000040;
+}
+
+#notificacao img {
+    margin-left: 3vw;
+    width: 10vw;
+}
+
+#notificacao p {
+    font-size: 4vw;
+    font-weight: 600;
+}

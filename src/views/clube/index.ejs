@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/png" href="/cardapio/assets/img/iconWeb.svg">
+    <link rel="stylesheet" href="/clube/assets/style.css">
+    <title>Cardápio</title>
+</head>
+<body>
+    <a href="/reserva"><img src="/cardapio/assets/img/voltar.png" id="voltar"></a>
+    <img src="/cardapio/assets/img/logo.png" class="logo">
+
+    <div class="corpo">
+        <nav class="navbar">
+            <a href="/inicial" class="active" id="NavInicio"><img src="/cardapio/assets/img/HomeClick.png" >Inicio</a>
+            <a href="#" class="active" id="NavReserva"> <img src="/cardapio/assets/img/Reserva.png" alt="">Reserva</a>
+            <a href="/Sacola" class="active" id="NavPedido"> <img src="/cardapio/assets/img/Pedido.png" alt="">Sacola</a>
+            <a href="#" class="active" id="NavPerfil"> <img src="/cardapio/assets/img/Perfil.png" alt="">Perfil</a>
+            </nav>
+    </div>
+
+    <section class="geral">
+        <div class="ttl">
+            <h1>Clube</h1>
+            <h3>Barraca do Roberto</h3>
+        </div>
+
+        <container>
+            <div style="width: 100%">
+                <div class="pontos">
+                    <h2>Pontos Acumulados</h2>
+                    <div>
+                        <h3><%= pontos %></h3>
+                        <p>pontos</p>
+                    </div>
+                </div>
+    
+                <div class="barra">
+                    <p style="font-size: 4vw; margin: 0; font-weight: 600;">mín</p>
+                    <img src="/clube/assets/img/barra.png" style="width: 65vw;">
+                    <p style="font-size: 4vw; margin: 0; font-weight: 600;"   >max</p>
+                </div>
+                
+                <div style="width: 100%; display: flex; justify-content: center;">
+                    <button id="btnRecompensas">Ver Recompensas</button>
+                </div>
+
+                <div class="historico">
+                    <div class="ttlHistorico">
+                        <h2 style="font-size: 6.5vw;">Histórico</h2>
+                        <% historicoCompleto.forEach(compra => { %>
+                        <div class="infoHist">
+                            <img src="/clube/assets/img/historico.png" style="width: 11vw;">
+                            <div>
+                                <h1><%= compra.diaSemana %> - <%= compra.dia %>/<%= compra.mes %></h2>
+                                <div style="display: flex; gap: 5vw;">
+                                    <h2>Ganho de pontos</h2>
+                                    <h2>+<%= compra.pontos %>pts</h2>
+                                </div>
+                            </div>
+                        </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </container>
+    </section>
+</body>
+</html>

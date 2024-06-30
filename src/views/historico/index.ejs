@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Pedidos</title>
+    <link rel="stylesheet" href="/path/to/your/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Histórico de Pedidos</h1>
+        <% if (DetalhesPedido.length > 0) { %>
+            <ul class="historico-list">
+                <% DetalhesPedido.forEach(pedido => { %>
+                    <li class="pedido-item">
+                        <h2>Pedido em: <%= new Date(pedido.DataPedido).toLocaleDateString('pt-BR') %></h2>
+                        <p><strong>Valor Total do Pedido:</strong> R$ <%= pedido.ValorTotalPedido.toFixed(2) %></p>
+                        <h3>Produtos:</h3>
+                        <ul class="produtos-list">
+                            <% pedido.Produtos.forEach(produto => { %>
+                                <li class="produto-item">
+                                    <p><strong>Nome do Produto:</strong> <%= produto.nome %></p>
+                                    <p><strong>Quantidade:</strong> <%= produto.Quantidade %></p>
+                                    <p><strong>Valor Unitário:</strong> R$ <%= produto.ValorProduto.toFixed(2) %></p>
+                                </li>
+                            <% }) %>
+                        </ul>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>Nenhum pedido encontrado.</p>
+        <% } %>
+    </div>
+</body>
+</html>

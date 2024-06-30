@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/png" href="/sacola/assets/img/iconWeb.svg">
+    <link rel="stylesheet" href="/sacola/assets/style.css">
+    <script src="/sacola/assets/script.js" defer></script>
+    <title>Sacola</title>
+</head>
+<body>
+    <img src="/cardapio/assets/img/logo.png" class="logo">
+
+    <section>
+        <h2 class="nmBarraca">Barraca do Roberto</h2>
+        <h4 class="sacola">Sacola</h4>
+
+        <div class="corpo">
+            <nav class="navbar">
+                <a href="/cardapio" class="active" id="NavInicio"><img src="/sacola/assets/img/Home.png">Inicio</a>
+                <a href="#" class="active" id="NavReserva"><img src="/sacola/assets/img/Reserva.png" alt="">Reserva</a>
+                <a href="/Sacola" class="active" id="NavSacola"><img src="/sacola/assets/img/sacola.png" alt="">Sacola</a>
+                <a href="#" class="active" id="NavPerfil"><img src="/sacola/assets/img/Perfil.png" alt="">Perfil</a>
+            </nav>
+        </div>
+
+        <div class="geral">
+            <div class="ttlProduto">
+                <h1>Produtos</h1>
+            </div>
+            <div id="produtos">
+                <% itensDetalhados.forEach(item => { %>
+                    <div class="produto" id="produto-<%= item.id %>">
+                        <img src='/sacola/assets/img/imgProdutos.svg' class='imgProduto'> 
+                        <div class="details">
+                            <div class="nmsProd">
+                                <h2><%= item.nome %></h2>
+                                <p>Preço: R$ <%= item.valor.toFixed(2) %></p>
+                            </div>
+                            <div>
+                                <div class="qtt">
+                                    <button class="diminuirQuantidade" id="diminuir-<%= item.id %>"><img src="/sacola/assets/img/menos.svg" class="imgSinalMenos"></button>
+                                    <p class="quantidade" id="quantidade-<%= item.id %>"><%= item.quantidade %></p>
+                                    <button class="aumentarQuantidade" id="aumentar-<%= item.id %>"><img src="/sacola/assets/img/mais.svg" class="imgSinalMais"></button>
+                                </div>
+                                <div class="apagar" id="Excluir-<%= item.id %>">
+                                    <img src="/sacola/assets/img/lixeira.png" class="imgLixeira">
+                                </div>
+                                <dialog class="ModalExcluir">
+                                    <div class="blur"></div>
+                                    <div class="Excluir">
+                                        <div class="x"><img src="/sacola/assets/img/x.png" class="FecharModalExcluir"></div>
+                                        <h3>Certeza que deseja excluir esse produto?</h3>
+                                        <div class="imgExcluir"><img src="/sacola/assets/img/imgExcluir.png"></div>
+                                        <p>*Essa ação não poderá ser desfeita</p>
+                                        <div class="divBtnExcluirModal">
+                                            <button id="apagar-<%= item.id %>">Excluir</button>
+                                        </div>
+                                    </div>
+                                </dialog>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            </div>
+        </div>
+    </section>
+
+    <div class="resumo">
+        <div class="total">
+            <h3>Total</h3>
+            <h3>R$ <%= valorTotal.toFixed(2) %></h3>
+        </div>
+        <div>
+            <form action="/pagamento" method="POST">
+                <button id="btnFinalizar" type="submit">Finalizar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="notificacao">
+        <img src="/cardapio/assets/img/ItemAdd.png">
+        <p>Produto Adicionado com sucesso</p>
+    </div>
+</body>
+</html>

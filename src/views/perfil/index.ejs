@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/perfil/assets/style.css" >
+    <script src="/perfil/assets/script.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="corpo">
+        <nav class="navbar">
+            <a href="/inicial" class="active" id="NavInicio"><img src="/cardapio/assets/img/HomeClick.png" >Inicio</a>
+            <a href="#" class="active" id="NavReserva"> <img src="/cardapio/assets/img/Reserva.png" alt="">Reserva</a>
+            <a href="/Sacola" class="active" id="NavPedido"> <img src="/cardapio/assets/img/Pedido.png" alt="">Sacola</a>
+            <a href="/perfil" class="active" id="NavPerfil"> <img src="/cardapio/assets/img/Perfil.png" alt="">Perfil</a>
+          </nav>
+    </div>
+
+    <section class="flex">
+
+        <div class="fundo_ftperfil">
+            <img src="/perfil/assets/img/perfil_config.png" alt="Imagem de perfil" class="img_perfil">
+            <button type="button" class="edt"><img src="/perfil/assets/img/editar.png" alt=""></button>
+        </div>
+
+        <div class="info_perfil">
+            <h1 class="H1">Conta</h1>
+            <h3 class="H3">Edite suas informaçoes aqui</h3> 
+            <div class="input_info">
+                <div class="ajuste_input">
+                    <p class="txt_input_info">Nome</p>
+                    <label class="inputs_info"><%= nome %> <%= sobreN %></label>
+                </div>   
+                <img src="/perfil/assets/img/lapis.png" alt="editar nome" class="editar_inputs" id="editarNome">
+            </div>
+        </div>
+
+        <dialog id="ModaEditNome">
+        <div class="blur"></div>
+            <div class="editarNome">
+                <form id="form-atualizar" method="post">
+                    <div class="forms">
+
+                        <div class="Xmodal"> 
+                            <h2>Edite suas informações</h2>
+                            <img src="/perfil/assets/img/fecharModal.png" id="FecharModal">
+                        </div>
+                        
+                        <div>
+                            <label for="nome" class="lbl">Nome</label>
+                            <input 
+                                type="text" 
+                                id="nome" 
+                                name="nmDigit"
+                                class="inpt" 
+                                placeholder="Novo nome" 
+                                required="required"
+                            >
+                        </div>
+            
+                        <div>
+                            <label for="nome" class="lbl">Sobre Nome</label>
+                            <input 
+                                type="text" 
+                                id="sobreNome" 
+                                name="nmDigit"
+                                class="inpt" 
+                                placeholder="Novo nome" 
+                                required="required"
+                            >
+                        </div>
+
+                        <div>
+                            <label for="senha" class="lbl">Senha</label>
+                            <input
+                                type="password" 
+                                id="senha" 
+                                name="senhaDigit"
+                                class="inpt"
+                                placeholder="Senha" 
+                                required="required"
+                            >
+                        </div>
+            
+                    </div>
+        
+                    <div class="btnAlterar">
+                        <button id="btnAlterar">Salvar alteração</button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
+
+    </section>
+
+    <section class="azul">
+
+        <div class="input">
+            <div class="ajuste_input">
+                <p class="txt_input">Email</p>
+                <label class="inputs"><%= email %></label>
+            </div>   
+            <img src="/perfil/assets/img/lapis.png" alt="editar Email" class="editar_inputs">
+        </div>
+        <div class="input">
+            <div class="ajuste_input">
+                <p class="txt_input">Senha</p>
+                <label class="inputs">•••••••••••</label>
+            </div>   
+            <img src="/perfil/assets/img/senha.png" alt="editar Email" class="editar_inputs">
+        </div>
+
+        <hr>
+
+        <div class="atalhos">
+            <button type="button" class="btn"><img src="/perfil/assets/img/heart.png" alt="Botão Favoritos" >Favoritos</button>
+            <button type="button" class="btn"><img src="/perfil/assets/img/clube.png" alt="Botão Clubes">Clubes</button>
+            <button type="button" class="btn"><img src="/perfil/assets/img/cupon.png" alt="Botão Cupons">Cupons</button>
+        </div>
+        <div class="atalhos">
+            <a href="/historico"><button type="button" class="historico"><img src="/perfil/assets/img/historico.png" alt="Histórico de compras">Histórico de compras</button></a>
+            <button type="button" class="btn"><img src="/perfil/assets/img/pontos.png" alt="Pontos">Pontos</button>
+        </div>
+
+        <h1 class="txt_h1">Termos</h1>
+        <p class="txt_termos">Verifique seus termos com o Praioou</p>
+        <button type="button" class="ajustes_termo">Termos e Contratos <img src="/perfil/assets/img/seta.png" alt="Seta para ler os termos e contratos"></button>
+        <button type="button" class="ajustes_termo">Ver tutorial do aplicativo <img src="/perfil/assets/img/seta.png" alt="Seta para ler os termos e contratos"></button>
+
+        <h1 class="txt_h1_config">Configurações</h1>
+        <button type="button" class="ajustes_termo">Ativar tema escuro<img src="/perfil/assets/img/seta.png" alt="Seta para ler os termos e contratos"></button>
+        <button type="button" class="ajustes_termo">Trocar de conta<img src="/perfil/assets/img/seta.png" alt="Seta para ler os termos e contratos"></button>
+        <button type="button" class="ajustes_termo">SAC<img src="/perfil/assets/img/seta.png" alt="Seta para ler os termos e contratos"></button>
+
+        <button type="button" class="Sair">Sair da minha conta</button>
+        <button type="button" class="Delete">Deletar minha conta</button>
+    </section>
+    <footer class="footer">
+        <p>Praioou © 2024</p>
+        <p>Versão 1.2.2.2</p>
+    </footer>
+
+    
+
+    <form id="form-deletar">
+        <label for="senha">Senha</label>
+        <input
+            type="password" 
+            id="senhaDel" 
+            name="senhaDigit"
+            class="input"
+            placeholder="Senha" 
+            required="required"
+        >
+
+        <button> Excluir conta </button>
+    </form>
+
+</body>
+</html>

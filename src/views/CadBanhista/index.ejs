@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="imagex/png" href="/CadBanhista/assets/img/iconWeb.svg">
+    <link rel="stylesheet" href="/CadBanhista/assets/style.css">
+    <script src="/CadBanhista/assets/script.js" defer></script>
+    <title>Cadastrar</title>
+    <style>
+        .input { width: 100%; padding: 8px; margin: 5px 0; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <div class="blur"></div>
+    <a href="/escolher"><img src="/CadBanhista/assets/img/voltar.png" id="voltar"></a>
+    <img src="/CadBanhista/assets/img/logo.png" class="logo">
+    
+    <div class="geral">
+        <div class="inc">
+            <button id="cdstBanhista"><img src="/CadBanhista/assets/img/bola.png">Banhista</button>
+            <h4>Cadastre suas informações!</h4>
+        </div>
+
+        <form id="form-cadastrar" method="post">
+            <div class="inpts">
+                <label for="nome">Nome</label>
+                <input 
+                    type="text" 
+                    id="nome" 
+                    name="nmDigit"
+                    class="input" 
+                    placeholder="Nome" 
+                    required="required"
+                >
+
+                <label for="Subnome">Sobrenome</label>
+                <input 
+                    type="text" 
+                    id="Sobnome" 
+                    name="sobnmDigit"
+                    class="input" 
+                    placeholder="Sobrenome" 
+                    required="required"
+                >
+
+                <label for="email">E-mail</label>
+                <input
+                    type="email" 
+                    id="email" 
+                    name="emailDigit"
+                    class="input" 
+                    placeholder="E-mail" 
+                    required="required"
+                >
+
+                <label for="senha">Senha</label>
+                <input
+                    type="password" 
+                    id="senha" 
+                    name="senhaDigit"
+                    class="input"
+                    placeholder="Senha" 
+                    required="required"
+                >
+
+                <label for="confirm-senha">Confirme a senha</label>
+                <input
+                    type="password" 
+                    id="confirm-senha" 
+                    name="confirm-senha"
+                    class="input"
+                    placeholder="Confirme a senha" 
+                    required="required"
+                >
+
+                <label for="Número">Telefone</label>
+                <input
+                    type="text"
+                    id="nmrTel"
+                    name="nmrDigit"
+                    class="input"
+                    placeholder="N°Telefone"
+                    required="required"
+                    maxlength="15"
+                >
+            </div>
+
+            <button type="submit" id="btnCadastrar">Cadastrar</button>
+        </form>
+
+        <h4 class="check"><input type="checkbox"> <label>Aceito receber informações e promoções por e-mail</label></h4>
+    </div>
+
+    <dialog id="modalTermos">
+        <div class="fade"></div>
+        <div class="termos">
+            <img src="/CadBanhista/assets/img/voltar.png" id="voltar2">
+    
+            <div class="text">
+                <h1>Para continuar, concorde com os termos abaixo</h1>
+    
+                <div>
+                    <h3 class="check2"><input type="checkbox" id="chkCond"> <label>Li e concordo com os Termos e Condições de Uso.</label></h3>
+                    <h3 class="check2"><input type="checkbox" id="chkPriv"> <label>Li e concordo com a Política de Privacidade.  </label></h3>
+                    <h4 class="dsp">Todos os Termos acima estão disponíveis na plataforma oficial: www.praioou.com/termos</h4>
+                </div>
+    
+                <div class="continuar">
+                    <button id="btnTermo">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <dialog id="msgSucesso">
+        <div class="blur"></div>
+        <div class="msgCorpo">
+            <h1>Cadastro feito com sucesso</h1>
+            <img src="/CadBanhista/assets/img/coquinho_Feliz.png" class="coquinho">
+            <h2>Bem-Vindo ao </h2>
+            <img src="/CadBanhista/assets/img/logo.png" class="msgLogo">
+            <button id="msgBtnConcluir">Concluir</button>
+        </div>
+    </dialog>
+</body>
+</html>

@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background-image: url(img/fundo.png);
+    background-color: #E7AA4D;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+.blur {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.1); 
+}
+
+#voltar {
+    position: fixed;
+    z-index: 2;
+    width: 10vw;
+    margin: 2vw;
+}
+
+.geral {
+    position: fixed;
+    z-index: 2;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    gap: 1vw;
+    display: grid;
+    height: 55%;
+}
+
+.logo {
+    position: fixed;
+    z-index: 2;
+    width: 25vw;
+    left: 50%;
+    top: 15vw;
+    transform: translate(-50%);
+}
+
+#cdstBarraqueiro {
+    border: 0;
+    background-color: #00404A;
+    color: white;
+    width: 75vw;
+    height: 20vw;
+    font-size: 9vw;
+    border-radius: 4vw;
+    margin: 10vw 0vw 8vw 0vw;
+    font-weight: 600;
+}
+
+#cdstBarraqueiro img {
+    position: absolute;
+    left: -1.5vw;
+    width: 23vw;
+}
+
+#cdstBanhista {
+    border: 0;
+    background-color: #00404A;
+    color: white;
+    width: 75vw;
+    height: 20vw;
+    font-size: 9vw;
+    border-radius: 4vw;
+    margin: 10vw 0vw 8vw 0vw;
+    font-weight: 600;
+}
+
+#cdstBanhista img {
+    position: absolute;
+    right: -1vw;
+    width: 19vw;
+    margin-top: 3vw;
+}
+
+.ttls h1{
+    color: white;
+    margin: 0;
+    font-size: 8vw;
+}
+
+.ttls h4{
+    color: white;
+    margin: 0;
+    font-size: 5vw;
+}
+
+.entrar {
+    height: 60vw;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    color: #00404A;
+    font-size: 4.5vw;
+    font-weight: 600;
+}
+
+.entrar h2 {
+    font-size: 5vw;
+}
+
+.entrar a {
+    color: white;
+    text-decoration: none;
+}
