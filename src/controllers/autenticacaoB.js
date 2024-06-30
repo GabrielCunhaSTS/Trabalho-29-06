@@ -10,15 +10,15 @@ module.exports = {
             emailDigit,
             senhaDigit,
             nmrTelDigit,
-            nmrcpfDigit,
+            cpfdigit,
         } = req.body;
 
         try {
 
             const hashedSenha = await bcrypt.hash(senhaDigit, 10);
 
-            const result = await conexaoSequelize.query('call adicionar_barraqueiro(?, ?, ?, ?, ?, ?)', {
-                replacements: [nmDigit, sobnmDigit, emailDigit, hashedSenha, nmrTelDigit, nmrcpfDigit],
+            const result = await conexaoSequelize.query('call adicionar_barraqueiro(?, ?, ?, ?, ?, ? )', {
+                replacements: [nmDigit, sobnmDigit, emailDigit, hashedSenha, nmrTelDigit, cpfdigit],
                 raw: true // Obter resultados em formato simplificado
             });
 

@@ -1,15 +1,15 @@
 (async function() {
-    document.getElementById('form-cadastrar2').addEventListener('submit', async (event) => { 
+    document.getElementById('form-cadastrarB').addEventListener('submit', async (event) => { 
         event.preventDefault();
 
-        const modalTermos = document.getElementById('modalTermos2')
-        const voltar = document.getElementById('voltar3')
-        const btnContinuar = document.getElementById('btnTermo2')
+        const modalTermosB = document.getElementById('modalTermosB')
+        const voltar = document.getElementById('voltar2')
+        const btnContinuar = document.getElementById('btnTermo')
 
-        modalTermos.show();
+        modalTermosB.show();
 
         voltar.onclick = function () {
-            modalTermos.close();
+            modalTermosB.close();
         }
 
         btnContinuar.onclick = async function () {
@@ -60,7 +60,7 @@
                     }
         
                     if (response.ok) {
-                        modalTermos.close();
+                        modalTermosB.close();
                         const msgSucesso = document.querySelector("#msgSucesso");
                         const btnIrlogin= document.querySelector("#msgBtnConcluir");
         
@@ -73,7 +73,7 @@
                         if (response.status === 409) {
 
                             alert('E-mail já cadastrado!')
-                            modalTermos.close();
+                            modalTermosB.close();
                             /*const msgErroEmail = document.querySelector("#msgErroEmail");
                             const btnVoltarEmail = document.querySelector("#btnVoltarEmail");
         

@@ -12,8 +12,8 @@ const Modelbarraqueiro = conexaoSequelize.define('barraqueiro', {
     nm_barraqueiro: DataTypes.STRING(85),
     nm_sobrenomeB: DataTypes.STRING(85),
     ds_emailB: DataTypes.STRING(100),
-    cd_cpfB: DataTypes.CHAR(17),
-    ds_senhaB: DataTypes.STRING(15),
+    cd_cpfB: DataTypes.CHAR(15),
+    ds_senhaB: DataTypes.STRING(100),
     nmr_telefoneB: DataTypes.CHAR(20),
     cd_plano: DataTypes.INTEGER,
     cd_token: DataTypes.STRING(100)

@@ -95,7 +95,7 @@ body{
     margin-bottom: 3vw;
 }
 
-#form-cadastrar2{
+#form-cadastrarB{
     gap: 5vw;
     display: flex;
     flex-wrap: wrap;
@@ -116,7 +116,7 @@ body{
     font-weight: bold;
 }
 
-#btnCadastrar {
+#btnCadastrarB {
     border: none;
     width: 50vw;
     height: 12vw;
@@ -216,7 +216,7 @@ body{
     margin-top: 3vw;
 }
 
-#modalTermos {
+#modalTermosB {
     margin: 0;
     padding: 0;
     border: none;
