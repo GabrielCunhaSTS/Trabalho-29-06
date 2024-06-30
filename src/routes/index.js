@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
+exports.router = router;
 const auth = require('../controllers/autenticacao');
+const authB = require('../controllers/autenticacaoB');
 const { findAllProdutos } = require('../controllers/produto');
 const pagamento = require('../controllers/pagamento');
 const sacola = require('../controllers/Sacola');
@@ -13,6 +15,7 @@ const { CarregarHistorico } = require('../controllers/historico');
 router.get('/', async (req, resp) => { return resp.render('login/index.ejs'); });
 router.get('/escolher', async (req, resp) => { return resp.render('escolher/index.ejs'); });
 router.get('/CadBanhista', async (req, resp) => { return resp.render('CadBanhista/index.ejs'); });
+router.get('/CadBarraqueiro', async (req, resp) => { return resp.render('CadBarraqueiro/index.ejs'); });
 router.get('/cardapio', auth.verificarAutenticacao, async (req, resp) => { return resp.render('cardapio/index.ejs'); });
 router.get('/inicial', auth.verificarAutenticacao, async (req, resp) => { return resp.render('inicial/index.ejs'); });
 router.get('/carrinho', auth.verificarAutenticacao, async (req, resp) => { return resp.render('carrinho/index.ejs'); });
@@ -25,6 +28,7 @@ router.get('/perfil', auth.verificarAutenticacao, perfil.CarregarPerfil);
 
 // Rotas POST
 router.post('/cadastrar', auth.CadastrarUsuario);
+router.post('/cadastrarB', authB.CadastrarUsuarioB);
 router.post('/login', auth.LoginUsuario);
 router.post('/sacola', sacola.AddItemSacola);
 router.post('/pagamento', pagamento.iniciarPagamento);

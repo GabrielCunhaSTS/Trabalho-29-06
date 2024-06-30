@@ -300,6 +300,28 @@ if exists(select cd_cliente from cliente where ds_emailC = emailC) then
 end $$
 delimiter ;
 
+-- ///////// PROCEDURE DE CRIAÇÃO barraqueiro /////////
+
+delimiter $$ 
+create procedure adicionar_barraqueiro(
+	in nome varchar(45),
+    in sobrenomeB varchar(45),
+    in emailB varchar(100),
+    in senhaB varchar(100),
+    in telefoneB varchar(15)
+)
+begin
+if exists(select cd_barraqueiro from barraqueiro where ds_emailB = emailB) then
+	select concat('Esse E-mail ja esta sendo utilizado, faça login') as Erro;
+    else
+	insert into barraqueiro(nm_barraqueiro, nm_sobrenomeB, ds_emailB, ds_senhaB, nmr_telefoneB)
+		values (nome, sobrenomeB, emailB, senhaB, telefoneB);
+	select concat(nome , ' foi cadastrado com sucesso :)' ) as Concluido;
+	end if;
+end $$
+delimiter ;
+
+
 -- ///////// PROCEDURE DE ATUALIZAÇÃO /////////
 delimiter $$
 create procedure atualiza_cliente(
