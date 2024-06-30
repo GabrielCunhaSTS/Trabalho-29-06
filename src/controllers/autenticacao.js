@@ -13,7 +13,6 @@ module.exports = {
         } = req.body;
 
         try {
-
             const hashedSenha = await bcrypt.hash(senhaDigit, 10);
 
             const result = await conexaoSequelize.query('call adicionar_cliente(?, ?, ?, ?, ?)', {
@@ -22,6 +21,29 @@ module.exports = {
             });
 
             console.log(result);
+            
+            if (result) {
+                const triggerSQL = `
+                    DELIMITER $$
+                    CREATE TRIGGER adiciona_cupom
+                    AFTER INSERT ON cliente
+                    FOR EACH ROW
+                    BEGIN
+                        INSERT INTO cupons(vl_cupom, dt_validade_cupom, cd_carrinho, cd_cliente)
+                        VALUES (50.0, '2024-02-12', NULL, NEW.cd_cliente);
+                    END $$
+                    DELIMITER ;
+                `;
+    
+                try {
+                    await conexaoSequelize.query(triggerSQL);
+                    console.log('Trigger adiciona_cupom criada com sucesso.');
+                } catch (error) {
+                    console.error('Erro ao criar a trigger:', error);
+                }
+            }
+
+            
 
             return resp.status(201).json({ msg: `Usuário ${nmDigit} criado com sucesso!` });
         } catch (error) {
