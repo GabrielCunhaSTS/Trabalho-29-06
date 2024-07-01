@@ -1,26 +1,55 @@
-const { conexaoSequelize } = require("../../config/bdConnection")
+const { Model } = require("sequelize");
+const { conexaoSequelize } = require("../../config/bdConnection");
+const { Modelbarraqueiro } = require("../models/barraqueiro");
 const { ModelCarrinho } = require("../models/carrinho")
 
 
 module.exports = {
-    CarregarBarraca: async (req, res) => { 
+    perfilBarraca: async (req, res) => {
         try {
-            const cd_carrinho = req.query.id;
-
-            let barraca = await ModelCarrinho.findOne({ where: { cd_carrinho: cd_carrinho } });
-
-            if (!barraca) {
-                return res.status(404).send('Barraca não encontrada');
+            const carrinhoId = req.params.id;
+            
+            if (!carrinhoId) {
+                throw new Error('ID do carrinho não fornecido');
             }
-
-            res.render('carrinho/index', {
-                nomeC: barraca.nm_carrinho,
-                descricao: barraca.ds_localizacao,
-                status: barraca.ds_status
+    
+            const carrinho = await ModelCarrinho.findOne({
+                where: { cd_carrinho: carrinhoId },
+                include: [{ 
+                    model: Modelbarraqueiro,
+                    attributes: [],
+                    required: true,
+                 }]
+            });
+    
+            if (!carrinho) {
+                return res.status(404).send('Carrinho não encontrado');
+            }
+    
+            res.render('reserva/index', { 
+                carrinho: carrinho
             });
         } catch (error) {
-            console.error('Erro ao carregar barraca', error);
+            console.error('Erro ao carregar barraca:', error);
             res.status(500).send('Erro ao carregar barraca');
+        }
+    },
+    todasBarracas: async (req, res) => {
+        try {
+            const resultado = await ModelCarrinho.findAll({
+                include: [{
+                    model: Modelbarraqueiro,
+                    attributes: [],
+                    required: true,
+                }]
+            });
+    
+            res.render('carrinho/index', {
+                barracas: resultado
+            });
+        } catch (error) {
+            console.error('Erro ao buscar as barracas:', error);
+            res.status(500).send('Erro ao buscar as barracas');
         }
     }
 }

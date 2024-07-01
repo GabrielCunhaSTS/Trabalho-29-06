@@ -17,7 +17,7 @@ const Modelbarraqueiro = conexaoSequelize.define('barraqueiro', {
     nmr_telefoneB: DataTypes.CHAR(20),
     cd_plano: DataTypes.INTEGER,
     cd_token: DataTypes.STRING(100)
-}, padraoTables('cardapio'));
+}, padraoTables('barraqueiro'));
 
 ModelPlano.hasMany(Modelbarraqueiro, {foreignKey: 'cd_plano'})
 Modelbarraqueiro.belongsTo(ModelPlano, {foreignKey: 'cd_plano'})

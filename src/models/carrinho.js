@@ -15,8 +15,8 @@ const ModelCarrinho = conexaoSequelize.define('carrinho', {
     ds_status: DataTypes.ENUM('Com Vaga','Sem Vaga')
 }, padraoTables('carrinho'));
 
-Modelbarraqueiro.hasMany(ModelCarrinho, {foreignKey: 'cd_barraqueiro'})
-ModelCarrinho.belongsTo(Modelbarraqueiro, {foreignKey: 'cd_barraqueiro'})
+Modelbarraqueiro.hasMany(ModelCarrinho, { foreignKey: 'cd_barraqueiro' });
+ModelCarrinho.belongsTo(Modelbarraqueiro, { foreignKey: 'cd_barraqueiro' });
 
 module.exports = {
     ModelCarrinho
