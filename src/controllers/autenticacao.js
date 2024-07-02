@@ -81,6 +81,8 @@ module.exports = {
             // Limpa as informações de autenticação do usuário
             resp.clearCookie('cookie_usuario');
             console.log({ msg: 'Logout bem sucedido.' });
+
+            resp.redirect('/');
         } catch (error) {
             console.error('Erro ao fazer logout:', error);
             resp.status(500).json({ msg: 'Erro ao fazer logout.' });

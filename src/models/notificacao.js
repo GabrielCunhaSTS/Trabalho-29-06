@@ -9,11 +9,11 @@ const ModelNotificacao = conexaoSequelize.define('notificacao', {
         autoIncrement: true, 
         primaryKey: true 
     },
+    cd_cliente: DataTypes.INTEGER,
     ds_titulo: DataTypes.TEXT(500),
     ds_descricao: DataTypes.TEXT(500),
-    ds_tipo: DataTypes.ENUM('Reserva','Pedido','Clube'),
-    ds_vizu: DataTypes.BOOLEAN,
-    cd_cliente: DataTypes.INTEGER
+    ds_tipo: DataTypes.ENUM('Cupom','Pedido','Pontos', 'Atualiza'),
+    ds_vizu: DataTypes.BOOLEAN
 }, padraoTables('notificacao'))
 
 module.exports = {

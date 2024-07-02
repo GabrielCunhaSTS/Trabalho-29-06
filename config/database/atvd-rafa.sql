@@ -257,15 +257,15 @@ create table historico(
         
     constraint fk_historico_cliente
         foreign key (cd_cliente)
-            references cliente(cd_cliente),
+            references cliente(cd_cliente) on delete cascade  ,
             
     constraint fk_historico_pedido
         foreign key (cd_pedido)
-            references pedido(cd_pedido),
+            references pedido(cd_pedido) on delete cascade  ,
             
     constraint fk_historico_carrinho
         foreign key (cd_carrinho)
-            references carrinho(cd_carrinho)
+            references carrinho(cd_carrinho) on delete cascade  
 );
 
 create table notificacao (
@@ -273,7 +273,7 @@ create table notificacao (
 	cd_cliente int,
     ds_titulo text(500),
     ds_descricao text(500),
-    ds_tipo enum('Reserva','Pedido','Clube'),
+    ds_tipo enum('Cupom','Pedido','Pontos', 'Atualiza'),
     ds_vizu boolean,
     
     constraint pk_notifi
@@ -284,33 +284,40 @@ create table notificacao (
 			references cliente(cd_cliente) on delete cascade  
 );
 
+insert into notificacao values (1,1,'Foi','Deus é bom', 'Cupom', false);
+
 select * from notificacao;
 
 -- ////////// INSERT //////////////
 
 select * from barraqueiro;
 
-insert into carrinho values(2,1,'Barraquinha testinha', 'Barraquinha do amor, com muita comida boa e alegria','Com vaga');
-
-insert into clube_usuario values (2,2, 'Carrinho da abobora', 785);
-
-insert into cupons values (4, 50, '2024-05-02 00:00:00', 2,2);
-
-insert into clube values (2, 2,'Carrinho da abobora');
-
-insert into pedido values (1,2,2, 58.12, 'G5');
-
-insert into reserva values (1,2,2, '2024-02-07', '12:00', 55.02);
+insert into cliente values 
+	(1, 'Mateus', 'Oliveira', 'mateus@gmail.com', '$2b$10$6S29oSFkSFQXeDCiFycwdu6l9pn5Oq/LpZ5LP194vKaTCCLpNbG1W', '(13) 98877-3546');
 
 insert into plano value 
 	(1,'aa', '2025-05-31', 40);
+    
+select * from cliente;
 
-
+    
 insert into barraqueiro values 
 	(1,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,426879513,13988357898, 1, null);
     
-insert into carrinho values
- (1,1,'Baraaca do rafa','safsafaewfa','Com Vaga');
+insert into carrinho values(1,1,'Barraquinha testinha', 'Barraquinha do amor, com muita comida boa e alegria','Com vaga');
+
+insert into clube values (1, 1,'Carrinho da abobora');
+
+insert into clube_usuario values (1,1, 'Carrinho da abobora', 100);
+
+insert into cupons values (4, 50, '2024-05-02 00:00:00', 1,1);
+
+insert into pedido values (1,1,1, 58.12, 'G5');
+
+insert into reserva values (1,1,1, '2024-02-07', '12:00', 55.02);
+
+/*insert into carrinho values
+ (1,1,'Baraaca do rafa','safsafaewfa','Com Vaga');*/
  
  insert into cardapio values 
 	(1,1);
@@ -321,12 +328,11 @@ insert into produto values
     (3,1,'pastel de carne','Pastel frito na hora, recheado com carne moída suculenta e bem temperada. Perfeito para quem adora um salgado tradicional, com várias opções para variar no sabor.', 15, 'salgado'),
     (4,1,'espetinho','Saborosos espetinhos de churrasco, grelhados à perfeição, trazendo o autêntico sabor do churrasco brasileiro. Uma excelente escolha para um lanche rápido e saboroso.', 10, 'salgado');
 
-
-insert into clube values 
-(1,1, 'amém');
+/*insert into clube values 
+(1,1, 'amém');*/
 
 insert into clube_usuario values 
-(1, 1, '100');	
+(1, 1, 'aa','100');		
 
 select * from clube_usuario;
 
@@ -392,11 +398,6 @@ values (50.0, '2024-02-12', null, new.cd_cliente);
 end $$
 delimiter ;
 
-drop trigger  adiciona_cupom;
-
-
-
-
 -- TESTEEEEEEEEEEEEE( TODOS OS COMANDO ACIMA SERAO USADOS PARA A ATVD DO RAFA)
 -- ///////// PROCEDURE DE ATUALIZAÇÃO /////////
 delimiter $$
@@ -434,3 +435,42 @@ delimiter ;
 
 /*drop table sacola;
 drop table pedido;*/
+
+delimiter $$
+
+create trigger atualiza_pontos
+after insert on historico
+for each row
+begin
+update clube_usuario set qt_pontos = qt_pontos + new.vl_total_pedido
+where cd_cliente = new.cd_cliente;
+end $$;
+delimiter ;
+
+select * from clube_usuario;
+
+select * from cupons;
+
+-- Trigger de notificação para cupons
+delimiter $$
+
+create trigger noti_cupons
+after insert on cupons
+for each row
+begin
+	insert into notificacao (cd_cliente, ds_titulo, ds_descricao, ds_tipo, ds_vizu)
+    values (new.cd_cliente, 'Novo Cupom', 'Um novo cupom foi adicionado na sua aba de cupom', 'Cupom', 0);
+end $$
+delimiter ;
+
+-- trigger de notificação para pedidos
+delimiter $$
+
+create trigger noti_pedido
+after insert on historico
+for each row
+begin
+	insert into notificacao (cd_cliente, ds_titulo, ds_descricao, ds_tipo, ds_vizu)
+    values (new.cd_cliente, 'Novo Pedido Feito', 'Seu pedido foi efetuado, em breve você vai recebelo', 'Pedido', 0);
+end $$
+delimiter ;

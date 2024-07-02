@@ -13,6 +13,7 @@ const cupom = require('../controllers/cupons')
 const { CarregarPontosClube } = require('../controllers/clube');
 const { AdiconarHistorico } = require('../controllers/compraCerta');
 const { CarregarHistorico } = require('../controllers/historico');
+const { CarregarNotificacoes } = require('../controllers/notificacao');
 
 // Rotas GET
 router.get('/', async (req, resp) => { return resp.render('login/index.ejs'); });
@@ -30,7 +31,7 @@ router.get('/sacola', auth.verificarAutenticacao, sacola.MostraItensSacola);
 router.get('/produtos', auth.verificarAutenticacao, findAllProdutos);
 router.get('/perfil', auth.verificarAutenticacao, perfil.CarregarPerfil);
 router.get('/cupons', auth.verificarAutenticacao, cupom.meusCupons);
-router.get('/notificacao', async (req, resp) => { return resp.render('notificacao/index.ejs'); });
+router.get('/notificacao', CarregarNotificacoes);
 
 // Rotas POST
 router.post('/cadastrar', auth.CadastrarUsuario);

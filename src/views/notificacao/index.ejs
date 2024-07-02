@@ -32,30 +32,35 @@
             </button>
         </div>
 
-        <div class="containers">
-            <div class="container">
-                <div class="img">
-                    <img src="./assets/img/cupom.png" alt="">
-                </div>
-                <div class="d">
-                    <p class="titulo-principal">Novo Cupom</p>
-                    <p class="titulo-secundario">Um novo cupom foi adicionado na sua aba de cupom</p>
+        <% ntfPedido.forEach(pedido => { %>
+            <div class="containers">
+                <div class="container">
+                    <div class="img">
+                        <img src="./assets/img/pedir.png" alt="">
+                    </div>
+                    <div class="d">
+                        <p class="titulo-principal"><%= pedido.ttlPedido %></p>
+                        <p class="titulo-secundario"><%= pedido.descricaoPedido %></p>
+                    </div>
                 </div>
             </div>
-        </div>
+        <% }) %>
 
-        <div class="containers">
-            <div class="container">
-                <div class="img">
-                    <img src="./assets/img/pedir.png" alt="">
-                </div>
-                <div class="d">
-                    <p class="titulo-principal">Novo Pedido Feito</p>
-                    <p class="titulo-secundario">Seu pedido foi efetuado, em breve você vai recebe-lo</p>
+        <% ntfCupom.forEach(cupom => { %>
+            <div class="containers">
+                <div class="container">
+                    <div class="img">
+                        <img src="./assets/img/cupom.png" alt="">
+                    </div>
+                    <div class="d">
+                        <p class="titulo-principal"><%= cupom.ttlCupom %></p>
+                        <p class="titulo-secundario"><%= cupom.descricaoCupom %></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="containers">
+        <% }); %>
+
+        <!-- <div class="containers">
             <div class="container">
                 <div class="img">
                     <img src="./assets/img/reserva.png" alt="">
@@ -76,7 +81,7 @@
                     <p class="titulo-secundario">Você recebeu novos pontos no Clube do Roberto, troque por recompensas</p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     </div>
 </body>
