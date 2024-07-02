@@ -1,7 +1,8 @@
 const { Model } = require("sequelize");
 const { conexaoSequelize } = require("../../config/bdConnection");
 const { Modelbarraqueiro } = require("../models/barraqueiro");
-const { ModelCarrinho } = require("../models/carrinho")
+const { ModelCarrinho } = require("../models/carrinho");
+const { ModelComentario } = require("../models/comentarios");
 
 
 module.exports = {
@@ -25,9 +26,18 @@ module.exports = {
             if (!carrinho) {
                 return res.status(404).send('Carrinho não encontrado');
             }
+            const comentario = await ModelComentario.findAll({
+                where:{cd_carrinho:carrinhoId},
+                include:[{
+                    model:ModelCarrinho,
+                    attributes:[],
+                    required: true,
+                }]
+            })
     
             res.render('reserva/index', { 
-                carrinho: carrinho
+                carrinho: carrinho,
+                comentario:comentario
             });
         } catch (error) {
             console.error('Erro ao carregar barraca:', error);

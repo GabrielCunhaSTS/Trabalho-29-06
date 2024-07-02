@@ -15,7 +15,7 @@ const ModelComentario = conexaoSequelize.define('avaliacao',{
     cd_cliente: DataTypes.INTEGER,
     ds_avaliacao: DataTypes.TEXT(500),
     qt_estrelas: DataTypes.DECIMAL(5,1),
-})
+},padraoTables('avaliacao'))
 
 ModelCarrinho.hasMany(ModelComentario, {foreignKey: 'cd_carrinho'});
 ModelComentario.belongsTo(ModelCarrinho, {foreignKey: 'cd_carrinho'})

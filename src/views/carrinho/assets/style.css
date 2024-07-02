@@ -139,6 +139,7 @@ a{
     flex-direction: column;
     width: 100%;
     margin-bottom: 25vw;
+    gap:5vw;
 }
 
 
@@ -162,7 +163,6 @@ a{
     background-color: #fff;
     border-radius: 4vw;
     border: solid 2px rgb(84, 84, 84);
-    margin-top: 5vw;
 }
 
 .caixaR{
@@ -173,7 +173,6 @@ a{
     background-color: #fff;
     border-radius: 4vw;
     border: solid 2px rgb(84, 84, 84);
-    margin-top: 5vw;
 }
 
 .escrita{

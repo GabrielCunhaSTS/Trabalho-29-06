@@ -42,7 +42,7 @@ router.post('/pagamento', pagamento.iniciarPagamento);
 router.post('/update-quantidade', sacola.UpdateQuantidade);
 router.post('/remove-produto', sacola.RemoveProduto);
 router.post('/atualizarNome', perfil.AtualizarNome);
-router.post('/comentarios', comentarios.batata);
+router.post('/comentarios/adicionar', comentarios.adcComentario);
 router.post('/DeletarConta', perfil.ExcluirConta)
 
 // Rotas GET para o pagamento

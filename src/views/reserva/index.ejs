@@ -97,6 +97,18 @@
             </div>
         </div>
 
+<form action="/comentarios/adicionar" method="post">
+    <textarea name="texto" id=""></textarea>
+    <button type="submit">Enviar</button>
+    <input type="hidden" name="idCarrinho" value="<%= carrinho.cd_carrinho %>">
+</form>
+
+<ul>
+    <% comentarios.forEach(comentario => { %>
+    <li><%= comentario.ds_avaliacao %></li>
+    <% }); %>
+</ul>
+
 </body>
 
 </html>
