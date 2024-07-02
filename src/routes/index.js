@@ -9,6 +9,7 @@ const { findAllProdutos } = require('../controllers/produto');
 const pagamento = require('../controllers/pagamento');
 const sacola = require('../controllers/Sacola');
 const perfil = require('../controllers/perfil');
+const cupom = require('../controllers/cupons')
 const { CarregarPontosClube } = require('../controllers/clube');
 const { AdiconarHistorico } = require('../controllers/compraCerta');
 const { CarregarHistorico } = require('../controllers/historico');
@@ -28,6 +29,7 @@ router.get('/historico', auth.verificarAutenticacao, CarregarHistorico)
 router.get('/sacola', auth.verificarAutenticacao, sacola.MostraItensSacola);
 router.get('/produtos', auth.verificarAutenticacao, findAllProdutos);
 router.get('/perfil', auth.verificarAutenticacao, perfil.CarregarPerfil);
+router.get('/cupons', auth.verificarAutenticacao, cupom.meusCupons);
 
 // Rotas POST
 router.post('/cadastrar', auth.CadastrarUsuario);

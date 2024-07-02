@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    font-family: "Montserrat", sans-serif;
+}
+
+body{
+    background-color: #E9F6FF;
+    background-image: url(img/Teste1.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar {
+    position: fixed;
+    z-index: 4;
+    bottom: 3vw;
+    width: 98%;
+    background-color: #ffffff;
+    display: flex;
+    border-radius: 5vw;
+    justify-content: space-around;
+    padding: 2vw 0;
+    left: 1vw;
+    border: solid 1px #CCCCCC;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  }
+  
+  .navbar a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    text-align: center;
+    font-size: 4vw;
+  }
+
+
+  .navbar .active img{
+    width: 7vw;
+  }
+
+#NavInicio {
+  color: #008B92;  
+}
+
+a{
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+}
+
+.Clube{
+    width: 10vw;
+}
+
+#voltar {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 10vw;
+    margin: 2vw;
+}
+
+.logo {
+    position: absolute;
+    z-index: 2;
+    width: 25vw;
+    left: 50%;
+    top: 5vw;
+    transform: translate(-50%);
+}
+
+.navSup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.volta{
+    width: 9vw;
+}
+
+
+.container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 22%;
+}
+
+.texto{
+    margin-left: 3%;
+    text-align: start;
+}
+
+.texto h1{
+    font-family: "Montserrat", sans-serif;
+}
+
+.texto h4{
+    margin-top: -12%;
+    font-family: "Montserrat", sans-serif;
+    font-size: 3vw;
+}
+
+#filter{
+    margin-right: 2vw;
+    border-radius: 3vw;
+    width: 25vw;
+    padding: 0.5vw;
+    font-size: 5vw;
+    font-family: "Montserrat", sans-serif;
+    font-weight:700;
+    color: #fff;
+    background-color: #008A93;
+}
+
+#option{
+    font-size: 8vw;
+}
+
+.navbar {
+    position: fixed;
+    bottom: 20px;
+    width: 98%;
+    background-color: #ffffff;
+    display: flex;
+    border-radius: 5vw;
+    justify-content: space-around;
+    padding: 10px 0;
+    left: 3.5px;
+    right: 1px;
+    border: solid 1px #D3DFE7;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
+  }
+  
+.navbar a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+  
+.navbar a.active {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Montserrat", sans-serif;
+    color: #015157;;
+    font-size: 3vw;
+    font-weight: bold;
+}
+
+.navbar .active img{
+    width: 7vw;
+}
+
+
+.caixa{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+    background-color: #ffffff;
+    border-radius: 10vw;
+}
+
+.cupom-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cupom {
+    width: 95%;
+}
+
+.parte-cima {
+    margin-top: 5vh;
+    display: flex;
+    background-color: #00404A;
+    gap: 11.3vh;
+    border-radius: 1.3vh 1.3vh 0vh 0vh;
+    border: #01323a 1px solid;
+}
+
+.img-barraca img {
+    width: 80px;
+    height: 80px;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    border-radius: 100%;
+}
+
+.img-barraca {
+    padding-left: 2vh;
+}
+
+.lado-direto {
+    display: flex;
+    flex-direction: column;
+    gap: -3vw;
+}
+
+.preco-cupom {
+    color: #ffff;
+    font-size: 2.9vh;
+    margin: 4vw 3vw 2vw 0vw;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.tipo-cupom {
+    color: #ffff;
+    margin-top: 0vh;
+    font-size: 1.9vh;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.parte-baixo {
+    display: flex;
+    background-color: #f3f3f3;
+    border-radius: 0vh 0vh 1vh 1vh;
+    gap: 9vh;
+    border: #e4e1e1 1px solid;
+}
+
+.validade {
+    padding-left: 2vh;
+    margin-bottom: 0.8vh;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif; 
+}
+
+.data{
+    font-family: 'Montserrat', sans-serif;
+    color: #515151;
+    font-size: 1.4vh;
+}
+
+.validade img {
+    width: 1.8vh;
+}
+
+.vldd {
+    font-size: 1.1vh;
+}
+
+.vldd p {
+    font-family: 'Montserrat', sans-serif;
+    color: #515151;
+}
+
+.qtd {
+    margin-top: 1vh;
+    display: flex;
+    text-align: center;
+    font-size: 0.8vh;
+    width: 10vh;
+    font-family: 'Montserrat', sans-serif; 
+}

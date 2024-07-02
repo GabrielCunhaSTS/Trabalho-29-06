@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style.css">
+    <title>Meus cupons</title>
+</head>
+<body>
+
+    <img src="./assets/img/logo.png" class="logo">
+
+    <div class="corpo">
+        <nav class="navbar">
+            <a href="/inicial" class="active" id="NavInicio"><img src="/cardapio/assets/img/HomeClick.png" >Inicio</a>
+            <a href="#" class="active" id="NavReserva"> <img src="/cardapio/assets/img/Reserva.png" alt="">Reserva</a>
+            <a href="/Sacola" class="active" id="NavPedido"> <img src="/cardapio/assets/img/Pedido.png" alt="">Sacola</a>
+            <a href="#" class="active" id="NavPerfil"> <img src="/cardapio/assets/img/Perfil.png" alt="">Perfil</a>
+          </nav>
+    </div>
+
+    <header class="navSup">
+        <a href="/perfil"><img src="assets/img/voltar.png" id="voltar"></a>
+        <a href=""><img class="Clube" src="assets/img/coroa.png" alt=""></a>
+    </header>
+    
+        <div class="container">
+            <div class="texto">
+                <h1>Seus Cupons</h1>
+                <h4>Todos os seus cupons em um só lugar</h4>
+            </div>
+        </div>
+        
+    <div class="caixa">
+        <% if (cupons && cupons.length > 0) { %>
+            <% cupons.forEach(cupom => { %>
+
+        <div class="cupom-container">
+            <div class="cupom">
+                <div class="parte-cima">
+                    <div class="img-barraca">
+                        <img class="perfil-barraca" src="assets/img/OIP.jpg" alt="">
+                    </div>
+                    <div class="lado-direto">
+                        <p class="preco-cupom">R$ <%= cupom.preco %> off</p>
+                        <p class="tipo-cupom">Primeira Compra <img src="assets/img/restaurante.png" alt=""></p>
+                    </div>
+                </div> 
+                <div class="parte-baixo">
+                    <div class="validade">
+                        <p class="data"><img src="assets/img/relogio.png" alt="">  Valido até <%= cupom.validade %></p>
+                        <p class="vldd">*Válido em qualquer barraca</p>
+                    </div>
+                    <div class="qtd">
+                        <p>cupom válido para qualquer barraca, porém pode ser usado somente uma vez</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+        <% } else { %>
+            <li>Nenhum cupom encontrado</li>
+        <% } %>
+        </div>
+    
+        
+</body>
+</html>
