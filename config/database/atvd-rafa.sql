@@ -244,6 +244,29 @@ create table if not exists cupons(
 			references carrinho(cd_carrinho) on delete cascade
 
 );
+create table historico(
+    cd_historico int auto_increment,
+    cd_pedido int,
+    cd_cliente int,
+    cd_carrinho int,
+    vl_total_pedido float,
+    dt_pedido datetime,
+
+    constraint pk_historico
+        primary key (cd_historico),
+        
+    constraint fk_historico_cliente
+        foreign key (cd_cliente)
+            references cliente(cd_cliente),
+            
+    constraint fk_historico_pedido
+        foreign key (cd_pedido)
+            references pedido(cd_pedido),
+            
+    constraint fk_historico_carrinho
+        foreign key (cd_carrinho)
+            references carrinho(cd_carrinho)
+);
 
 create table notificacao (
 	cd_notificacao int auto_increment,
