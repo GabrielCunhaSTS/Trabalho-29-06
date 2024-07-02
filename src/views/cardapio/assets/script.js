@@ -132,3 +132,17 @@ adicionarSacola.addEventListener('click', () => {
         modalProduto.close();
     });
 });
+
+const btnFiltroSalgado = document.getElementById('btnFiltroSalgado')
+
+btnFiltroSalgado.addEventListener('click', () => {
+    const response = fetch('/filtroSalgado', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    if (response.ok) { 
+        location.reload();
+    }
+})

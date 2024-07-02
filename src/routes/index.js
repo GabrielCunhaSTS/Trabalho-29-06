@@ -14,6 +14,7 @@ const { CarregarPontosClube } = require('../controllers/clube');
 const { AdiconarHistorico } = require('../controllers/compraCerta');
 const { CarregarHistorico } = require('../controllers/historico');
 const { CarregarNotificacoes } = require('../controllers/notificacao');
+const { filtroSalgado } = require('../controllers/filtro');
 
 // Rotas GET
 router.get('/', async (req, resp) => { return resp.render('login/index.ejs'); });
@@ -45,6 +46,7 @@ router.post('/remove-produto', sacola.RemoveProduto);
 router.post('/atualizarNome', perfil.AtualizarNome);
 router.post('/comentarios/adicionar', comentarios.adcComentario);
 router.post('/DeletarConta', perfil.ExcluirConta)
+router.post('/filtroSalgado', filtroSalgado)
 
 // Rotas GET para o pagamento
 router.get('/compracerta', AdiconarHistorico);

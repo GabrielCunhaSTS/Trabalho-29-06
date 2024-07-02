@@ -2,7 +2,7 @@ drop database if exists db_praioou;
 create database db_praioou;
 
 use db_praioou;
-   
+
 create table if not exists cliente (
 	cd_cliente int AUTO_INCREMENT,
     nm_cliente varchar(45),
@@ -14,6 +14,8 @@ create table if not exists cliente (
 	constraint pk_cliente
 		primary key (cd_cliente)
 );
+
+select * from cliente;
 
 create table if not exists plano(
 	cd_plano int auto_increment,
@@ -58,8 +60,6 @@ create table if not exists carrinho (
 		foreign key(cd_barraqueiro)
 			references barraqueiro(cd_barraqueiro) on delete cascade
 );
-
-
 
 create table if not exists reserva (
 	cd_reserva int auto_increment,
@@ -244,13 +244,36 @@ create table if not exists cupons(
 			references carrinho(cd_carrinho) on delete cascade
 
 );
+create table historico(
+    cd_historico int auto_increment,
+    cd_pedido int,
+    cd_cliente int,
+    cd_carrinho int,
+    vl_total_pedido float,
+    dt_pedido datetime,
+
+    constraint pk_historico
+        primary key (cd_historico),
+        
+    constraint fk_historico_cliente
+        foreign key (cd_cliente)
+            references cliente(cd_cliente) on delete cascade  ,
+            
+    constraint fk_historico_pedido
+        foreign key (cd_pedido)
+            references pedido(cd_pedido) on delete cascade  ,
+            
+    constraint fk_historico_carrinho
+        foreign key (cd_carrinho)
+            references carrinho(cd_carrinho) on delete cascade  
+);
 
 create table notificacao (
 	cd_notificacao int auto_increment,
 	cd_cliente int,
     ds_titulo text(500),
     ds_descricao text(500),
-    ds_tipo enum('Reserva','Pedido','Clube'),
+    ds_tipo enum('Cupom','Pedido','Pontos', 'Atualiza'),
     ds_vizu boolean,
     
     constraint pk_notifi
@@ -260,6 +283,43 @@ create table notificacao (
 		foreign key (cd_cliente)
 			references cliente(cd_cliente) on delete cascade  
 );
+
+
+-- ////////// INSERT //////////////
+
+insert into cliente values (1, 'Mateus', 'Oliveira', 'mateus@gmail.com', '$2b$10$6S29oSFkSFQXeDCiFycwdu6l9pn5Oq/LpZ5LP194vKaTCCLpNbG1W', '(13) 98877-3546');
+
+insert into plano value (1,'aa', '2025-05-31', 40);
+    
+insert into barraqueiro values (1,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,426879513,13988357898, 1, null);
+    
+insert into carrinho values(1,1,'Barraquinha testinha', 'Barraquinha do amor, com muita comida boa e alegria','Com vaga');
+
+insert into clube values (1, 1,'Carrinho da abobora');
+
+insert into clube_usuario values (1,1, 'Carrinho da abobora', 100);
+
+insert into cupons values (4, 50, '2024-05-02 00:00:00', 1,1);
+
+insert into pedido values (1,1,1, 58.12, 'G5');
+
+insert into reserva values (1,1,1, '2024-02-07', '12:00', 55.02);
+
+ insert into cardapio values (1,1);
+ 
+insert into notificacao values (1,1,'Foi','Deus é bom', 'Cupom', false);	
+
+select * from cliente;
+	
+insert into produto values
+	(1,1,'isca de frango','Deliciosas tiras de frango empanadas e fritas até a perfeição, servidas com batatas fritas crocantes. Um prato irresistível para os amantes de frango.',60,'salgado'),
+    (2,1,'pastel de frango','Pastel crocante recheado com suculento frango desfiado, temperado com especiarias que garantem um sabor inesquecível. Disponível em diversas variedades para agradar todos os paladares.', 15, 'salgado'),
+    (3,1,'pastel de carne','Pastel frito na hora, recheado com carne moída suculenta e bem temperada. Perfeito para quem adora um salgado tradicional, com várias opções para variar no sabor.', 15, 'salgado'),
+    (4,1,'espetinho','Saborosos espetinhos de churrasco, grelhados à perfeição, trazendo o autêntico sabor do churrasco brasileiro. Uma excelente escolha para um lanche rápido e saboroso.', 10, 'salgado');
+
+insert into clube_usuario values (1, 1, 'aa','100');		
+
+-- //////////////////////////////////////////////////// PROCEDURES ////////////////////////////////////////////////////
 
 -- ///////// PROCEDURE DE CRIAÇÃO /////////
 delimiter $$ 
@@ -271,16 +331,11 @@ create procedure adicionar_cliente(
     in telefoneC varchar(15)
 )
 begin
-if exists(select cd_cliente from cliente where ds_emailC = emailC) then
-	select concat('Esse E-mail ja esta sendo utilizado, faça login') as Erro;
-    else
 	insert into cliente(nm_cliente, nm_sobrenomeC, ds_emailC, ds_senhaC, nmr_telefoneC)
 		values (nome, sobrenomeC, emailC, senhaC, telefoneC);
 	select concat(nome , ' foi cadastrado com sucesso :)' ) as Concluido;
-	end if;
 end $$
-delimiter ;
-
+delimiter ; 
 
 delimiter $$ 
 create procedure adicionar_barraqueiro(
@@ -302,132 +357,8 @@ if exists(select cd_barraqueiro from barraqueiro where ds_emailB = emailB) then
 	end if;
 end $$
 delimiter ;
-drop procedure adicionar_barraqueiro;
 
-delimiter $$
-
-create trigger checar_emailB
-before insert on barraqueiro
-for each row
-begin
-    if exists (select 1 from cliente where cliente.ds_emailC = new.ds_emailB) then
-        signal sqlstate '45000' set message_text = 'Uma conta Banhista já está utilizando esse email, por favor tente outro';
-    end if;
-end $$
-
-delimiter ;
-
-drop trigger checar_emailB;
-
-delimiter $$
-
-create trigger checar_emailC
-before insert on cliente
-for each row 
-begin
-    if exists (select 1 from barraqueiro where barraqueiro.ds_emailB = new.ds_emailC) then
-        signal sqlstate '45000' set message_text = 'Uma conta Barraqueiro já está utilizando esse email, por favor tente outro';
-    end if;
-end $$
-
-
-delimiter ;
-
-drop trigger checar_emailC;
-
-insert into barraqueiro values (110,'Rafael','Dantas','rafaeldantas@gmail.com', 48935984628 , 426879513 , 13988357898, null, null);
-
-insert into cliente values (86, 'fernanda', 'fefe', 'rafaeldantas@gmail.com', '1234', '13996032814');
-
-insert into barraqueiro values (10,'Rafael','Dantas','biel@gmail.com', 48935984628 , 426879513 , 13988357898, null, null);
-
-insert into cliente values (88, 'fernanda', 'fefe', 'biel@gmail.com', '1234', '13996032814');
-
-select * from barraqueiro;
-
-select * from cliente;
-
--- teste
-
-select * from notificacao;
-
--- ////////// INSERT //////////////
-
-insert into clube values (2, 2,'Carrinho da abobora');
-
-select * from barraqueiro;
-
-insert into carrinho values(2,1,'Barraquinha testinha', 'Barraquinha do amor, com muita comida boa e alegria','Com vaga');
-
-insert into reserva values (1,2,2, '2024-02-07', '12:00', 55.02);
-
-insert into pedido values (1,2,2, 58.12, 'G5');
-
-drop table clube_usuario;
-
-insert into clube_usuario values (2,2, 'Carrinho da abobora', 785);
-
-drop table clube_usuario;
-
-insert into clube_usuario values (2,2, 'Carrinho da abobora', 785);
-
-insert into plano value 
-	(1,'aa', '2025-05-31', 40);
-    
-     insert into cliente values 
-	(11,'Rafael','Dantas','rafaeldan@gmail.com',48958,13988357898);
-    
-    
-    insert into cliente values (25, 'fernanda', 'fefe', 'rafaeldantas@gmail.com', '1234', '13996032814');
-
-insert into cupons values (4, 50, '2024-05-02 00:00:00', 2,2);
-
-insert into barraqueiro values 
-	(1,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,426879513,13988357898, null, null);
-    
-insert into barraqueiro values 
-	(44,'Rafael','Dantas','rafaeldan
-    tas@gmail.com',48935984628,426879513,13988357898, 1, null);
-
-insert into barraqueiro values 
-	(5,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,426879513,13988357898, 1, null);
-    
-    insert into barraqueiro values 
-	(14,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,426879513,13988357898, 1, null);
-    
-    insert into cliente values 
-	(8,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,13988357898);
-    
-     insert into cliente values 
-	(11,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,13988357898);
-
-update carrinho set ds_localizacao = 'Carrinho de otima qualidade, proximo ao canal 3, com uma variedade imensa de produtos' where cd_carrinho = 1;
- 
- 
- insert into cardapio values 
-	(1,1);
-		
-insert into produto values
-	(1,1,'isca de frango','Deliciosas tiras de frango empanadas e fritas até a perfeição, servidas com batatas fritas crocantes. Um prato irresistível para os amantes de frango.',60,'salgado'),
-    (2,1,'pastel de frango','Pastel crocante recheado com suculento frango desfiado, temperado com especiarias que garantem um sabor inesquecível. Disponível em diversas variedades para agradar todos os paladares.', 15, 'salgado'),
-    (3,1,'pastel de carne','Pastel frito na hora, recheado com carne moída suculenta e bem temperada. Perfeito para quem adora um salgado tradicional, com várias opções para variar no sabor.', 15, 'salgado'),
-    (4,1,'espetinho','Saborosos espetinhos de churrasco, grelhados à perfeição, trazendo o autêntico sabor do churrasco brasileiro. Uma excelente escolha para um lanche rápido e saboroso.', 10, 'salgado');
-
-
-insert into clube values 
-(1,1, 'amém');
-
-insert into clube_usuario values 
-(1, 1, '100');	
-
-select * from clube_usuario;
-
-select * from pedido;
-select * from sacola;
-
-select * from cliente;
-
-
+-- TESTEEEEEEEEEEEEE( TODOS OS COMANDO ACIMA SERAO USADOS PARA A ATVD DO RAFA)
 -- ///////// PROCEDURE DE ATUALIZAÇÃO /////////
 delimiter $$
 create procedure atualiza_cliente(
@@ -462,5 +393,95 @@ begin
     end $$
 delimiter ;
 
-/*drop table sacola;
-drop table pedido;*/
+-- //////////////////////////////////////////////////// TRIGGER ////////////////////////////////////////////////////
+
+-- trigger que adiciona um cupom de 50 reais de desconto na primeira compra para novos clientes (pode servir para qualquer carrinho ja que não a codigo de carrinho inserido no cupom)
+delimiter $$
+
+create trigger adiciona_cupom
+after insert on cliente
+for each row
+begin
+insert into cupons(vl_cupom, dt_validade_cupom, cd_carrinho, cd_cliente)
+values (50.0, '2024-02-12', null, new.cd_cliente);
+end $$
+delimiter ;
+
+-- ///////////// Trigger para atualizar pontos /////////////
+delimiter $$
+
+create trigger atualiza_pontos
+after insert on historico
+for each row
+begin
+update clube_usuario set qt_pontos = qt_pontos + new.vl_total_pedido
+where cd_cliente = new.cd_cliente;
+end $$;
+delimiter ;
+
+-- ///////////// Trigger de notificação para cupons /////////////
+delimiter $$
+
+create trigger noti_cupons
+after insert on cupons
+for each row
+begin
+	insert into notificacao (cd_cliente, ds_titulo, ds_descricao, ds_tipo, ds_vizu)
+    values (new.cd_cliente, 'Novo Cupom', 'Um novo cupom foi adicionado na sua aba de cupom', 'Cupom', 0);
+end $$
+delimiter ;
+
+-- ///////////// trigger de notificação para pedidos /////////////
+delimiter $$
+
+create trigger noti_pedido
+after insert on historico
+for each row
+begin
+	insert into notificacao (cd_cliente, ds_titulo, ds_descricao, ds_tipo, ds_vizu)
+    values (new.cd_cliente, 'Novo Pedido Feito', 'Seu pedido foi efetuado, em breve você vai recebelo', 'Pedido', 0);
+end $$
+delimiter ;
+
+delimiter $$
+
+create trigger checar_emailB
+before insert on barraqueiro
+for each row
+begin
+    if exists (select 1 from cliente where cliente.ds_emailC = new.ds_emailB) then
+        signal sqlstate '45000' set message_text = 'Uma conta banhista já está utilizando esse email, por favor tente outro';
+    end if;
+end $$
+
+delimiter ;
+
+delimiter $$
+
+create trigger checar_emailC
+before insert on cliente
+for each row 
+begin
+    if exists (select 1 from barraqueiro where barraqueiro.ds_emailB = new.ds_emailC) then
+        signal sqlstate '45000' set message_text = 'Uma conta Banhista já está utilizando esse email, por favor tente outro';
+    end if;
+end $$
+
+delimiter ;
+
+
+-- //////////////////////////////////////////////////// Relatório ////////////////////////////////////////////////////
+
+-- ///////////// Relatório de categoria /////////////
+delimiter $$
+
+create procedure Relatorio_categoria(
+	in categoria enum('doce','salgado','bebida'),
+    in carrinho int
+)
+begin
+	select  nm_carrinho, cd_produto, nm_produto, ds_produto,ds_categoria, vl_produto from produto join cardapio on produto.cd_cardapio = cardapio.cd_cardapio join carrinho on carrinho.cd_carrinho = cardapio.cd_carrinho
+		where produto.ds_categoria = categoria and carrinho.cd_carrinho = carrinho;
+end $$;
+
+delimiter ;
