@@ -27,7 +27,7 @@
             });
             
             if (response.ok) {
-                alert('foi')
+                location.reload();
             }
             else {
                 if (response.status == 401 ) {
@@ -69,11 +69,32 @@
                 if (response.status === 401) {
                     alert('Senha incorreta');
                     limparCampo();
+                    location.reload();
                 }
             }
         } catch (error) {
             console.error('Erro ao excluir conta:', error);
             alert('Erro ao excluir conta. Por favor, tente novamente mais tarde.');
+        }
+    });
+
+    document.getElementById('btnSair').addEventListener('click', async () => {
+        try {
+            // Faz uma requisição ao servidor para realizar o logout
+            const response = await fetch('/logout', {
+                method: 'POST'
+            });
+
+            if (response.ok) {
+                // Redireciona o usuário para a página inicial após o logout
+                window.location.href = "/";
+            } else {
+                // Se ocorrer um erro, exibe um alerta
+                alert('Erro ao fazer logout. Tente novamente mais tarde.');
+            }
+        } catch (error) {
+            console.error('Erro ao fazer logout: ', error);
+            alert('Ocorreu um erro ao tentar fazer logout. Tente novamente mais tarde.');
         }
     });
 })();
@@ -90,3 +111,16 @@ editarNome.onclick = function () {
         ModalEditNome.close();
     }
 }
+
+const btnExcluirConta = document.getElementById('btnExcluirConta');
+const ModalExcluirConta = document.getElementById('ModalExcluirConta');
+
+btnExcluirConta.onclick = function () {
+    ModalExcluirConta.show();
+
+    const FecharModal = document.getElementById('FecharModal2')
+
+    FecharModal.onclick = function () {
+        ModalExcluirConta.close();
+    }
+};

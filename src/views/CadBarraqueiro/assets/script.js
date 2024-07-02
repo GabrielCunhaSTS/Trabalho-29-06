@@ -1,5 +1,5 @@
 (async function() {
-    document.getElementById('form-cadastrarB').addEventListener('submit', async (event) => { 
+    document.getElementById('form-cadastrarB').addEventListener('submit', async (event) => {
         event.preventDefault();
 
         const modalTermosB = document.getElementById('modalTermosB')
@@ -16,85 +16,56 @@
             const checkCond = document.getElementById('chkCond')
             const checkPriv = document.getElementById('chkPriv')
 
-            if (checkCond.checked != false && checkPriv.checked != false) {
+            if (checkCond.checked && checkPriv.checked) {
                 
                 const Senha = document.getElementById('senha').value;
-                // Obtém o valor do campo de confirmação de senha
                 const campoConfirmaSenha = document.getElementById('confirm-senha').value;
                 
-                // Verifica se as senhas são diferentes
                 if (Senha !== campoConfirmaSenha) {
-                    alert('As senhas estão diferentes!')
-
-                    document.getElementById('senha').value = ''; // Limpa o campo de senha
+                    alert('As senhas estão diferentes!');
+                    document.getElementById('senha').value = '';
                     document.getElementById('confirm-senha').value = '';
                     return;
                 }
 
                 const dadosForm = {
-                    nmDigit: document.getElementById('nome').value, // Obtém o valor do campo de nome
+                    nmDigit: document.getElementById('nome').value,
                     sobnmDigit: document.getElementById('Sobnome').value,
-                    emailDigit: document.getElementById('email').value, // Obtém o valor do campo de email
-                    senhaDigit: Senha, // Usa a senha obtida anteriormente
-                    nmrTelDigit: document.getElementById('nmrTel').value,// Obtém o valor do campo de número de telefone
+                    emailDigit: document.getElementById('email').value,
+                    senhaDigit: Senha,
+                    nmrTelDigit: document.getElementById('nmrTel').value,
                     cpfdigit: document.getElementById('nmrcpf').value
                 };
 
                 try {
-                    // Envia os dados do formulário para o servidor
                     const response = await fetch('/cadastrarB', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(dadosForm) // Converte os dados do formulário para JSON e envia
+                        body: JSON.stringify(dadosForm)
                     });
-        
-                    // Função para limpar os campos do formulário após o envio bem-sucedido
-                    function limparCampos() {
-                        document.getElementById('nome').value = ''; // Limpa o campo de nome
-                        document.getElementById('Sobnome').value = '';
-                        document.getElementById('email').value = ''; // Limpa o campo de email
-                        document.getElementById('nmrTel').value = ''; // Limpa o campo de número de telefone
-                        document.getElementById('senha').value = ''; // Limpa o campo de senha
-                        document.getElementById('confirm-senha').value = ''; // Limpa o campo de confirmação de senha
-                        document.getElementById('nmrcpf').value = '';
-                    }
-        
+
                     if (response.ok) {
                         modalTermosB.close();
                         const msgSucesso = document.querySelector("#msgSucesso");
-                        const btnIrlogin= document.querySelector("#msgBtnConcluir");
-        
-                        msgSucesso.show(); // Exibe uma mensagem de erro
-        
+                        const btnIrlogin = document.querySelector("#msgBtnConcluir");
+
+                        msgSucesso.show();
+
                         btnIrlogin.onclick = function () {
                             window.location.href = "/";
                         };
                     } else {
-                        if (response.status === 409) {
-
-                            alert('E-mail já cadastrado!')
-                            modalTermosB.close();
-                            /*const msgErroEmail = document.querySelector("#msgErroEmail");
-                            const btnVoltarEmail = document.querySelector("#btnVoltarEmail");
-        
-                            msgErroEmail.show(); // Exibe uma mensagem de erro
-        
-                            btnVoltarEmail.onclick = function () {
-                                msgErroEmail.close(); // Fecha a mensagem de erro ao clicar no botão 'Voltar'
-                            };*/
-                        }
-                        limparCampos();
+                        const data = await response.json();
+                        alert(data.msg);
+                        modalTermosB.close();
                     }
                 } catch (erro) {
-                    console.error('Erro ao enviar dados do formulário: ', erro); // Registra qualquer erro no console
-                    alert('Ocorreu um erro ao tentar criar a conta!'); // Exibe um alerta de erro
-                    limparCampos(); // Limpa os campos do formulário
+                    console.error('Erro ao enviar dados do formulário: ', erro);
+                    alert('Ocorreu um erro ao tentar criar a conta!');
                 }
 
-            }
-
-            else {
-                alert('Os campos são obrigatórios')
+            } else {
+                alert('Os campos são obrigatórios');
             }
         }
 

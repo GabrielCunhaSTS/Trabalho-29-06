@@ -36,6 +36,7 @@ router.get('/notificacao', async (req, resp) => { return resp.render('notificaca
 router.post('/cadastrar', auth.CadastrarUsuario);
 router.post('/cadastrarB', authB.CadastrarUsuarioB);
 router.post('/login', auth.LoginUsuario);
+router.post('/logout', auth.LogoutUsuario);
 router.post('/sacola', sacola.AddItemSacola);
 router.post('/pagamento', pagamento.iniciarPagamento);
 router.post('/update-quantidade', sacola.UpdateQuantidade);

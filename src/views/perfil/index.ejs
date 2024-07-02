@@ -39,7 +39,7 @@
         </div>
 
         <dialog id="ModaEditNome">
-        <div class="blur"></div>
+            <div class="blur"></div>
             <div class="editarNome">
                 <form id="form-atualizar" method="post">
                     <div class="forms">
@@ -135,29 +135,43 @@
         <button type="button" class="ajustes_termo">Trocar de conta<img src="/perfil/assets/img/seta.png" alt="Seta para ler os termos e contratos"></button>
         <button type="button" class="ajustes_termo">SAC<img src="/perfil/assets/img/seta.png" alt="Seta para ler os termos e contratos"></button>
 
-        <button type="button" class="Sair">Sair da minha conta</button>
-        <button type="button" class="Delete">Deletar minha conta</button>
+        <button type="button" class="Sair" id="btnSair">Sair da minha conta</button>
+        <button type="button" class="Delete" id="btnExcluirConta">Deletar minha conta</button>
+
+        <dialog id="ModalExcluirConta">
+            <div class="blur"></div>
+            <div class="ExcluirConta">
+                <form id="form-deletar" method="post">
+                    <div class="forms">
+    
+                        <div class="Xmodal"> 
+                            <h2>Excluir conta</h2>
+                            <img src="/perfil/assets/img/fecharModal.png" id="FecharModal2">
+                        </div>
+                        
+                        <div>
+                            <label for="nome" class="lbl"></label>
+                            <input
+                                type="password" 
+                                id="senhaDel" 
+                                name="senhaDigit"
+                                class="input"
+                                placeholder="Senha" 
+                                required="required"
+                            >
+                        </div>
+                    </div>
+        
+                    <div class="btnAlterar">
+                        <button id="btnExcluirConta"> Excluir conta </button>
+                    </div>
+                </form>
+            </div>
+        </dialog>
     </section>
     <footer class="footer">
         <p>Praioou © 2024</p>
         <p>Versão 1.2.2.2</p>
     </footer>
-
-    
-
-    <form id="form-deletar">
-        <label for="senha">Senha</label>
-        <input
-            type="password" 
-            id="senhaDel" 
-            name="senhaDigit"
-            class="input"
-            placeholder="Senha" 
-            required="required"
-        >
-
-        <button> Excluir conta </button>
-    </form>
-
 </body>
 </html>
