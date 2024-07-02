@@ -12,6 +12,7 @@ const ModelNotificacao = conexaoSequelize.define('notificacao', {
     ds_titulo: DataTypes.TEXT(500),
     ds_descricao: DataTypes.TEXT(500),
     ds_tipo: DataTypes.ENUM('Reserva','Pedido','Clube'),
+    ds_vizu: DataTypes.BOOLEAN,
     cd_cliente: DataTypes.INTEGER
 }, padraoTables('notificacao'))
 

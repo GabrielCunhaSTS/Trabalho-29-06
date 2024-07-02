@@ -55,10 +55,12 @@ body{
     width: 7vw;
 }
 
-.caixa{
+
+
+.caixa{ 
+    z-index: -2;
     width: 100%;
-    background-color: #fff;
-    opacity: 40%;
+    background-color: #ffffff6d;
     margin-top: 17vw;
     height: 180vw;
     border-radius: 3vw;
@@ -76,14 +78,20 @@ body{
 .containers{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     gap: 40vw;
 }
 
 .container{
     display: flex;
+    flex-direction: row;
+    border-radius: 2vw;
+    gap: 4vw;
     width: 90%;
     background-color: #f30303;
+    width: 90%;
+    padding: 2vw;
 }
 
 .img{
@@ -94,17 +102,17 @@ body{
 }
 
 .img img{
-    width: 13vw;
+    width: 15vw;
     padding-left: 3vw;
 }
 
 .d p{
     display: flex;
-    margin-top: -1vw;
+    
 }
 
 .titulo-secundario{
     display: flex;
-    margin-top: 20vw;
-    margin-bottom: 3vw;
+margin-top: -2vw;
+
 }
