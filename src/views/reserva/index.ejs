@@ -97,16 +97,16 @@
             </div>
         </div>
 
-<form action="/comentarios/adicionar" method="post">
-    <textarea name="texto" id=""></textarea>
-    <button type="submit">Enviar</button>
+<form class="teste" action="/comentarios/adicionar" method="post">
+    <textarea class="digit" name="texto" id="" rows="5" placeholder="Digite seu comentario" style="border-radius: 1.5vw;"></textarea>
+    <button class="btn" type="submit">Enviar</button>
     <input type="hidden" name="idCarrinho" value="<%= carrinho.cd_carrinho %>">
 </form>
 
 <ul>
-    <ul>
+    <ul class="ul">
         <% comentarios.forEach(comentario => { %>
-        <li><%= comentario.ds_avaliacao %></li>
+        <li class="coment"><%= comentario.ds_avaliacao %></li>
         <% }); %>
     </ul>
 </ul>

@@ -431,3 +431,41 @@ a{
     content:"\2605 \2605 \2605 \2605 \2605";
     color: #00404A;
 }
+
+.teste{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5vw;
+    gap: 2vw;
+}
+
+.btn{
+    background-color: #00404A;
+    color: #FFF;
+    width: 20vw;
+    height: 7vw;
+
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    border: none;
+    text-align: center;
+    border-radius: 1vw;
+    font-size: 5vw;
+}
+
+ul{
+    list-style-type: none; 
+    padding: 0%;
+}
+
+.coment {
+    display: flex;
+    align-self: center;
+    background-color: #FFF;
+    width: 90%;
+    height: 5vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
