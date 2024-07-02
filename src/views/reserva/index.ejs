@@ -104,9 +104,11 @@
 </form>
 
 <ul>
-    <% comentarios.forEach(comentario => { %>
-    <li><%= comentario.ds_avaliacao %></li>
-    <% }); %>
+    <ul>
+        <% comentarios.forEach(comentario => { %>
+        <li><%= comentario.ds_avaliacao %></li>
+        <% }); %>
+    </ul>
 </ul>
 
 </body>

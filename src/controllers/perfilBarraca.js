@@ -37,7 +37,7 @@ module.exports = {
     
             res.render('reserva/index', { 
                 carrinho: carrinho,
-                comentario:comentario
+                comentarios: comentario // Corrigido de 'comentario' para 'comentarios'            
             });
         } catch (error) {
             console.error('Erro ao carregar barraca:', error);
