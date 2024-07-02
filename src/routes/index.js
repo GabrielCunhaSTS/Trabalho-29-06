@@ -30,6 +30,7 @@ router.get('/sacola', auth.verificarAutenticacao, sacola.MostraItensSacola);
 router.get('/produtos', auth.verificarAutenticacao, findAllProdutos);
 router.get('/perfil', auth.verificarAutenticacao, perfil.CarregarPerfil);
 router.get('/cupons', auth.verificarAutenticacao, cupom.meusCupons);
+router.get('/notificacao', async (req, resp) => { return resp.render('notificacao/index.ejs'); });
 
 // Rotas POST
 router.post('/cadastrar', auth.CadastrarUsuario);
