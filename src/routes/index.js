@@ -21,6 +21,7 @@ router.get('/', async (req, resp) => { return resp.render('login/index.ejs'); })
 router.get('/escolher', async (req, resp) => { return resp.render('escolher/index.ejs'); });
 router.get('/CadBanhista', async (req, resp) => { return resp.render('CadBanhista/index.ejs'); });
 router.get('/CadBarraqueiro', async (req, resp) => { return resp.render('CadBarraqueiro/index.ejs'); });
+router.get('/planos', async (req, resp) => { return resp.render('CadPlanos/index.ejs'); });
 router.get('/cardapio', auth.verificarAutenticacao, async (req, resp) => { return resp.render('cardapio/index.ejs'); });
 router.get('/inicial', auth.verificarAutenticacao, async (req, resp) => { return resp.render('inicial/index.ejs'); });
 router.get('/carrinho', auth.verificarAutenticacao, carrinho.todasBarracas);
@@ -33,6 +34,7 @@ router.get('/produtos', auth.verificarAutenticacao, findAllProdutos);
 router.get('/perfil', auth.verificarAutenticacao, perfil.CarregarPerfil);
 router.get('/cupons', auth.verificarAutenticacao, cupom.meusCupons);
 router.get('/notificacao', CarregarNotificacoes);
+
 
 // Rotas POST
 router.post('/cadastrar', auth.CadastrarUsuario);
