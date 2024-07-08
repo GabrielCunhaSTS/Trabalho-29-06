@@ -6,7 +6,7 @@
 
 body{
     background-image: url(img/fundo.png);
-    background-color: #E7AA4D;
+    background-color: rgb(231, 170, 77);
     background-size: cover;
     background-repeat: no-repeat;
     margin: 0;
@@ -24,38 +24,199 @@ body{
     transform: translate(-50%);
 }
 
-.titulos{
+/* .blur {
+    z-index: -7;
+    position: fixed;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    border-radius: 2vw;
-}
-
-.titu{
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    background-color: #192020;
-    color: #fff;
-}
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1); 
+} */
 
 .planos{
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    gap: 2vw;
+    margin-bottom: 5vw;
 }
 
-.container{
-    z-index: -2;
+.maresia, .AguaDeCoco, .peNaAreia {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    width: 90%;
-    background-color: #0A7C84;
-    margin-top: 20vw;
-    border-radius: 6vw;
-    opacity: 60%;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+    gap: 5vw;
+    padding: 2vw;
+    border-radius: 2vw 14vw 2vw 2vw;
+    color: #fff;
+    margin-left: 1vw;
+}
+
+.maresia p, .AguaDeCoco p, .peNaAreia p{
+    margin: 0;
+    font-weight: bold;
+    font-size: 4.2vw;
+}
+
+
+.maresia {
+    background-color: #4EB9BE;
+}
+
+.AguaDeCoco {
+    background-color: #00ABAE;
+}
+
+.peNaAreia {
+    background-color: #00404A;
 }
 
 .imgPlano{
-    width: 50px;
+    padding-top: 5vw;
+    width: 70px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96%;
+    background-color: rgba(10, 124, 132, 0.6);
+    margin-top: 15vw;
+    border-radius: 6vw;
+}
+
+.titulos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    border-radius: 2vw;
+    margin-bottom: 3vw; 
+    margin-top: 3vw;
+}
+
+.titu {
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    background-color: #192020;
+    color: #fff;  
+    border-radius: 3vw;
+}
+
+.titu p{
+    margin: 0;
+    padding: 2vw;
+    font-weight: bold;
+    font-size: 6vw;
+}
+
+.subtitulo{
+    color: #fff;
+    font-size: 3.5vw;
+}
+
+.modalPlano{
+    width: 90%;
+    border-radius: 5vw;
+    border: #00404A 1.4vw solid;
+    background-color: #fff;
+}
+
+.tituloModal{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #00404A;
+    font-weight: bolder;
+    font-size: 5.4vw;
+    gap: 1vw;
+}
+
+.vantagens{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.vantagens li{
+    display: flex;
+    align-items: center;
+    margin-bottom: 4.4vw;
+    padding-left: 3vw;
+    font-weight: bold;
+    font-size: 3.8vw;
+}
+
+.vantagens li::before{
+    content: '';
+    width: 15px; 
+    height: 15px;
+    background-color: #00404A;
+    border-radius: 50%;
+    margin-right: 10px;
+} 
+
+.tempoPlano{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5vw;
+    margin-bottom: 2vw;
+}
+
+.mensal, .semestral, .anual{
+    display: flex;
+    flex-direction: row;
+    font-weight: bold;
+    color: #00404A;
+    gap: 1vw;
+}
+
+.assinar{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3vw;
+}
+
+.btn-assinar{
+    background-color: #00404A;
+    color: #fff;
+    padding: 3vw;
+    font-size: 4.4vw;
+    font-weight: bold;
+    border-radius: 7vw;
+}
+
+.termos{
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    text-align: justify;
+    color: #fff;
+}
+
+.check{
+    font-weight: 400;
+    font-size: 4vw;
+}
+
+.btn-teste{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-compra{
+    background-color: #00404A;
+    color: #fff;
+    padding: 3vw;
+    font-size: 4.4vw;
+    font-weight: bold;
+    border-radius: 4vw;
+    margin-bottom: 5vw;
 }
