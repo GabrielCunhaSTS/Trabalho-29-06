@@ -8,6 +8,7 @@
 </head>
 <body>
 
+    <div class="blur"></div>
     <img src="/CadBarraqueiro/assets/img/logo.png" class="logo">
 
     <div class="container">
@@ -19,53 +20,107 @@
         </div>
 
         <div class="planos">
-            <div class="maresia">
-                <img img class="imgPlano" src="CadPlanos/assets/img/guardaSol.png" alt="">
-                <p class="nomePlano">Maresia</p>
-            </div>
-            <div class="AguaDeCoco">
-                <img img class="imgPlano" src="CadPlanos/assets/img/coco.png" alt="">
-                <p class="nomePlano">Água de Coco</p>
-            </div>
-            <div class="peNaAreia">
-                <img class="imgPlano" src="CadPlanos/assets/img/chinelo.png" alt="">
-                <p class="nomePlano">Pé na Areia</p>
-            </div>
+        <div class="maresia" onclick="openModal('Maresia', 'CadPlanos/assets/img/guardaSol.png', 'Carrinhos Ilimitados,Reservas automaticas,Comandas digitais e automatizadas,Atendimento ao cliente 24hrs', '14,99', '84,99', '152,99')">
+            <img class="imgPlano" src="CadPlanos/assets/img/guardaSol.png" alt="">
+            <p class="nomePlano">Maresia</p>
+        </div>
+        <div class="AguaDeCoco" onclick="openModal('Água de Coco', 'CadPlanos/assets/img/coco.png', 'Carrinhos Ilimitados, Estatisticas a cada 3 e 6 meses, Comandas digitais e automatizadas, Reservas automaticas, Direito a um clube, Atendimento ao cliente 24hrs', '24,99', '144,99', '294,99')">
+            <img class="imgPlano" src="CadPlanos/assets/img/coco.png" alt="">
+            <p class="nomePlano">Água de Coco</p>
+        </div>
+        <div class="peNaAreia" onclick="openModal('Pé na Areia', 'CadPlanos/assets/img/chinelo.png', 'Carrinhos Ilimitados, Todas as estatisticas disponiveis, Comandas e Reservas digitais e automatizadas, Clubes ilimitados, Seu perfil no topo das pesquisas', '49,99', '289,99', '499,99')">
+            <img class="imgPlano" src="CadPlanos/assets/img/chinelo.png" alt="">
+            <p class="nomePlano">Pé na Areia</p>
+        </div>
+    </div>
+
+    <div class="modalPlano" id="modalPlano">
+        <div class="tituloModal">
+            <p id="modalTitle">Maresia</p>
+            <img id="modalImage" src="CadPlanos/assets/img/guardaSol.png" width="30px" alt="">
         </div>
 
-        <div class="modalPlano">
+        <div class="container-vantagens">
+            <ul class="vantagens" id="modalVantagens">
+                <li>Carrinhos Ilimitados</li>
+                <li>Reservas automaticas</li>
+                <li>Comandas digitais e automatizadas</li>
+                <li>Atendimento ao cliente 24hrs</li>
+            </ul>
+        </div>
 
-            <div class="tituloModal">
-                <p>Maresia</p>
-                <img src="CadPlanos/assets/img/guardaSol.png" width="30px" alt="">
+        <div class="tempoPlano">
+            <div class="mensal">
+                <input type="radio" name="plano" id="mensal" value="14,99">
+                <p>Mensal</p>
             </div>
+            <div class="semestral">
+                <input type="radio" name="plano" id="semestral" value="84,99">
+                <p>Semestral</p>
+            </div>
+            <div class="anual">
+                <input type="radio" name="plano" id="anual" value="152,99">
+                <p>Anual</p>
+            </div>
+        </div>
+        <div class="assinar">
+            <button id="botao-preco" class="btn-assinar">Assinar R$ 14,99</button>
+        </div>
+    </div>
+            <script>
+                // Seleciona todos os inputs de radio com name="plano"
+                const radios = document.querySelectorAll('input[name="plano"]');
+                // Seleciona o botão
+                const button = document.getElementById('botao-preco');
+        
+                // Adiciona um evento de mudança para cada radio button
+                radios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        // Atualiza o valor do botão com o valor do radio button selecionado
+                        button.innerText = `Assinar R$ ${this.value}`;
+                    });
+                });
+            </script>
 
-            <div class="container-vantagens">
-                <ul class="vantagens">
-                    <li>Carrinhos Ilimitados</li>
-                    <li>Estatisticas a cada 6 meses</li>
-                    <li>Comandas digitais e automatizadas</li>
-                    <li>Direito a um clube</li>
-                </ul>
-            </div>
+<script>
+    function openModal(titulo, imagem, vantagens, precoMensal, precoSemestral, precoAnual) {
+        // Atualiza o título e a imagem do modal
+        document.getElementById('modalTitle').innerText = titulo;
+        document.getElementById('modalImage').src = imagem;
 
-            <div class="tempoPlano">
-                <div class="mensal">
-                    <input type="radio">
-                    <p>Mensal</p>
-                </div>
-                <div class="semestral">
-                    <input type="radio">
-                    <p>Semestral</p>
-                </div>
-                <div class="anual">
-                    <input type="radio">
-                    <p>Anual</p>
-                </div>
-            </div>
-            <div class="assinar">
-                <button class="btn-assinar">Assinar   R$ 29,00</button>
-            </div>
+        // Atualiza as vantagens
+        const vantagensList = document.getElementById('modalVantagens');
+        vantagensList.innerHTML = ''; // Limpa as vantagens anteriores
+
+        vantagens.split(',').forEach(vantagem => {
+            const li = document.createElement('li');
+            li.innerText = vantagem;
+            vantagensList.appendChild(li);
+        });
+
+        // Atualiza os valores dos radio buttons
+        document.getElementById('mensal').value = precoMensal;
+        document.getElementById('semestral').value = precoSemestral;
+        document.getElementById('anual').value = precoAnual;
+
+        // Atualiza o texto do botão com o preço mensal por padrão
+        document.getElementById('botao-preco').innerText = `Assinar R$ ${precoMensal}`;
+
+        // Mostra o modal
+        document.getElementById('modalPlano').style.display = 'block';
+    }
+
+    // Adicione um evento para os radio buttons para atualizar o valor do botão
+    const radioss = document.querySelectorAll('input[name="plano"]');
+    const buttonn = document.getElementById('botao-preco');
+
+    radioss.forEach(radio => {
+        radio.addEventListener('change', function() {
+            buttonn.innerText = `Assinar R$ ${this.value}`;
+        });
+    });
+</script>
+
         </div>
 
         <div class="termos">
