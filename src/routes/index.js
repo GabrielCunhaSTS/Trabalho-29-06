@@ -25,7 +25,6 @@ router.get('/planos', async (req, resp) => { return resp.render('CadPlanos/index
 router.get('/cardapio', auth.verificarAutenticacao, async (req, resp) => { return resp.render('cardapio/index.ejs'); });
 router.get('/inicial', auth.verificarAutenticacao, async (req, resp) => { return resp.render('inicial/index.ejs'); });
 router.get('/carrinho', auth.verificarAutenticacao, carrinho.todasBarracas);
-router.get('/reserva', auth.verificarAutenticacao, async (req, resp) => { return resp.render('reserva/index.ejs'); });
 router.get('/reserva/:id', auth.verificarAutenticacao, carrinho.perfilBarraca);
 router.get('/clube', auth.verificarAutenticacao, CarregarPontosClube);
 router.get('/historico', auth.verificarAutenticacao, CarregarHistorico)

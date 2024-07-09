@@ -53,7 +53,6 @@ adicionarSacola.addEventListener('click', () => {
                     }
                 `);
         
-                // Fechar a notificação automaticamente após 3 segundos
                 setTimeout(() => {
                     notificacao.style.animation = 'fecharNtf 0.3s linear';
                     notificacao.addEventListener('animationend', () => {
@@ -61,7 +60,6 @@ adicionarSacola.addEventListener('click', () => {
                     }, { once: true });
                 }, 2000);
         
-                // Limpar a animação e o evento de fechamento ao abrir a notificação novamente
                 notificacao.style.animation = '';
                 notificacao.removeEventListener('animationend', () => {
                     notificacao.style.display = 'none';
@@ -94,7 +92,7 @@ adicionarSacola.addEventListener('click', () => {
     fetch('/produtos')
     .then(response => response.json())
     .then(data => {
-        produtosDiv.innerHTML = ''; // Limpar o contêiner antes de adicionar novos produtos
+        produtosDiv.innerHTML = '';
         data.forEach(produto => {
             const produtoDiv = document.createElement('div');
             produtoDiv.classList.add('produto');

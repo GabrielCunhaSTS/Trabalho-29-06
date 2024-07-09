@@ -293,7 +293,9 @@ insert into plano value (1,'aa', '2025-05-31', 40);
     
 insert into barraqueiro values (1,'Rafael','Dantas','rafaeldantas@gmail.com',48935984628,426879513,13988357898, 1, null);
     
-insert into carrinho values(1,1,'Barraquinha testinha', 'Barraquinha do amor, com muita comida boa e alegria','Com vaga');
+insert into carrinho values
+(1,1,'Barraquinha testinha', 'Barraquinha do amor, com muita comida boa e alegria','Com vaga'),
+(2,1,'Barraquinha testinha2', 'Barraquinha do amor, com muita comida boa e alegria','Com vaga');
 
 insert into clube values (1, 1,'Carrinho da abobora');
 

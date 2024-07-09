@@ -1,41 +1,47 @@
-const bcrypt = require('bcrypt');
-const { ModelCliente } = require('../models/cliente');
-const { conexaoSequelize } = require('../../config/bdConnection');
+const bcrypt = require('bcrypt'); // Importa o módulo 'bcrypt' para criptografar senhas
+const { ModelCliente } = require('../models/cliente'); // Importa o modelo do cliente para interagir com o banco de dados
 
 module.exports = {
+    // Função para cadastrar um novo usuário
     CadastrarUsuario: async (req, resp) => {
         const {
-            nmDigit,
-            sobnmDigit,
-            emailDigit,
-            senhaDigit,
-            nmrTelDigit
+            nmDigit, // Nome do usuário
+            emailDigit, // Email do usuário
+            nmrTelDigit, // Número de telefone do usuário
+            sxDigit, // Sexo do usuário
+            senhaDigit // Senha do usuário
         } = req.body;
-
+    
         try {
-            const hashedSenha = await bcrypt.hash(senhaDigit, 10);
-
-            const result = await conexaoSequelize.query('call adicionar_cliente(?, ?, ?, ?, ?)', {
-                replacements: [nmDigit, sobnmDigit, emailDigit, hashedSenha, nmrTelDigit],
-                raw: true // Obter resultados em formato simplificado
+            let UsuarioProposto = await ModelCliente.findOne({ where: { ds_emailC: emailDigit }});
+    
+            if (UsuarioProposto) {
+                return resp.status(409).json({ msg: 'Já existe um usuário com esse email!' });
+            }
+    
+            if (!senhaDigit) {
+                return resp.status(400).json({ msg: 'A senha não foi fornecida!' });
+            }
+    
+            const hashedSenha = await bcrypt.hash(senhaDigit, 10); // Criptografa a senha do usuário
+    
+            UsuarioProposto = await ModelCliente.create({
+                nm_cliente: nmDigit,
+                ds_emailC: emailDigit,
+                nmr_telefoneC: nmrTelDigit,
+                sg_sexoC: sxDigit,
+                ds_senhaC: hashedSenha, // Salva a senha criptografada no banco de dados
+                qt_pontos: null
             });
-
-            console.log(result);
-            
+    
+            console.log({ msg: `Usuário ${nmDigit} criado com sucesso!` });
             return resp.status(201).json({ msg: `Usuário ${nmDigit} criado com sucesso!` });
         } catch (error) {
-            // Captura e exibe a mensagem de erro específica da trigger
-            console.error('Erro ao cadastrar usuário:', error.message || error);
-            
-            // Verifica se o erro é uma instância de SequelizeDatabaseError para extrair a mensagem específica
-            if (error.name === 'SequelizeDatabaseError') {
-                return resp.status(400).json({ msg: error.message });
-            }
-            
+            console.error(error);
             return resp.status(500).json({ msg: 'Erro no servidor ao tentar cadastrar usuário!' });
         }
     },
-
+    
     // Função para realizar o login de um usuário existente
     LoginUsuario: async (req, resp) => {
         const { emailDigit, senhaDigit } = req.body;
@@ -57,16 +63,16 @@ module.exports = {
                 return resp.status(401).json({ msg: 'Senha incorreta!' });
             }
 
-            const Hora = 3600000;
-            const dtQuandoIraExpirar = new Date(Date.now() + Hora);
+            const Hora = 3600000
+            const dtQuandoIraExpirar = new Date(Date.now() + Hora)
 
             resp.cookie('cookie_usuario', usuario.cd_cliente, {
                 httpOnly: true,
                 expires: dtQuandoIraExpirar
-            });
+            })
 
             // Se tudo estiver correto, retorna uma resposta de sucesso
-            console.log({ msg: 'Login bem-sucedido!' });
+            console.log({ msg: 'Login bem-sucedido!'});
             return resp.status(200).json({ msg: 'Login bem-sucedido!', usuario });
         } catch (error) {
             console.error(error);
@@ -81,12 +87,13 @@ module.exports = {
             // Limpa as informações de autenticação do usuário
             resp.clearCookie('cookie_usuario');
             console.log({ msg: 'Logout bem sucedido.' });
-
+    
+            // Redireciona o usuário para a página inicial
             resp.redirect('/');
         } catch (error) {
             console.error('Erro ao fazer logout:', error);
             resp.status(500).json({ msg: 'Erro ao fazer logout.' });
-        }
+        } 
     },
 
     // Middleware para verificar se o usuário não está autenticado
@@ -99,5 +106,5 @@ module.exports = {
             // Se não estiver autenticado, redireciona para a página de login
             return resp.redirect('/');
         }
-    }
-};
+    }   
+}
